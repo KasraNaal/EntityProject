@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../EntityProjectBack/EntityProjectBack.csproj" />
+  <Project Path="EntityProjectFront.csproj" />
+</Solution>
