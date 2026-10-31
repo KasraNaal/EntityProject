@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/Doc/" />
+  <Folder Name="/Src/" />
+  <Folder Name="/Src/Common/">
+    <Project Path="../EntittyProject.Common/EntittyProject.Common.csproj" Id="96440b09-3964-4b37-a0d1-c50e87f7e8ff" />
+  </Folder>
+  <Folder Name="/Src/Core/">
+    <Project Path="../ClassLibrary1/EntityProject.Domain.csproj" Id="278a817a-6edb-4d95-9f37-3bcebe3af0a0" />
+    <Project Path="../ClassLibrary2/EntityProject.Application.csproj" Id="d6b466d5-09a4-4937-bbf4-f230a200c4a2" />
+  </Folder>
+  <Folder Name="/Src/Infrastructure/">
+    <Project Path="../EntityProject.Persistence/EntityProject.Persistence.csproj" Id="07e5e7cc-bdfe-4af8-8232-df5ffedffc0d" />
+    <Project Path="../Infrastructure/EntityProject.Infrastructure.csproj" Id="9e43c614-abae-43bd-882e-12277313f8cf" />
+  </Folder>
+  <Folder Name="/Src/Presentation/">
+    <Project Path="../EndPoint.Site/EndPoint.Site.csproj" Id="949bc3e8-7433-4c21-8540-8af5062d02cb" />
+  </Folder>
+  <Folder Name="/Test/" />
+</Solution>
