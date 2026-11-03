@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Src/" />
+  <Folder Name="/Src/Core/">
+    <Project Path="EntittyProject.Domain/EntittyProject.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Src/Infrastructure/" />
+  <Folder Name="/Src/Presentation/" />
+  <Folder Name="/Test/" />
+</Solution>
