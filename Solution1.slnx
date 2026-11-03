@@ -1,9 +1,15 @@
 <Solution>
   <Folder Name="/Src/" />
   <Folder Name="/Src/Core/">
+    <Project Path="EntittyProject.Application/EntittyProject.Application.csproj" />
     <Project Path="EntittyProject.Domain/EntittyProject.Domain.csproj" />
   </Folder>
-  <Folder Name="/Src/Infrastructure/" />
-  <Folder Name="/Src/Presentation/" />
+  <Folder Name="/Src/Infrastructure/">
+    <Project Path="EntittyProject.Infrastructure/EntittyProject.Infrastructure.csproj" />
+    <Project Path="EntittyProject.Interface/EntittyProject.Interface.csproj" />
+  </Folder>
+  <Folder Name="/Src/Presentation/">
+    <Project Path="EndPoint.Site/EndPoint.Site.csproj" />
+  </Folder>
   <Folder Name="/Test/" />
 </Solution>
