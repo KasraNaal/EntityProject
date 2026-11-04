@@ -10,11 +10,11 @@ namespace EntittyProject.Application.UseCase
     {
         public string PasswordValidation(string password)
         {
-            if (password.Count() > 8 || password.Contains('@'))
+            if (password.Count() >= 8 && password.Contains('@'))
             {
                 return password;
             }
-            return "Your password should be more than 8 character and contains '@'";
+            return "Your password should be more than 8 characters and contains @";
         }
     }
 }
