@@ -10,5 +10,7 @@
   <Folder Name="/Src/Presentation/">
     <Project Path="EndPoint.Site/EndPoint.Site.csproj" Id="43488ff4-9e45-45cd-b89c-51d34de3adbe" />
   </Folder>
-  <Folder Name="/Test/" />
+  <Folder Name="/Test/">
+    <Project Path="EntityProject.Application.Tests/EntityProject.Application.Tests.csproj" Id="9294cfbb-21ce-4102-a47d-eff6354ca72a" />
+  </Folder>
 </Solution>
