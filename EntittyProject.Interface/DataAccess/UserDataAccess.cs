@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using EntityProject.Domain.Entities;
+using EntittyProject.Application.Interface;
 
 
-namespace EntityProject.Application.Usecase.UserUseCase
+namespace EntityProject.Persistence.DataAccess
 {
-    public class User
+    public class UserDataAccess: IDataAccess
     {
         private readonly IDataBaseContext _context;
 
-        public User(IDataBaseContext context)
+        public UserDataAccess(IDataBaseContext context)
         {
             _context = context;
         }
@@ -44,9 +45,9 @@ namespace EntityProject.Application.Usecase.UserUseCase
             }
         }
 
-        public void DeleteUser(int userId)
+        public void DeleteUser(int Id)
         {
-            var user = _context.Users.Find(userId);
+            var user = _context.Users.Find(Id);
             if (user != null)
             {
                 _context.Users.Remove(user);
