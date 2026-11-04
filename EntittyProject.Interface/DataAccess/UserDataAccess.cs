@@ -21,18 +21,18 @@ namespace EntityProject.Persistence.DataAccess
             _context = context;
         }
 
-        public void AddUser(Domain.Entities.User user)
+        public void AddUser(User user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
         }
 
-        public List<Domain.Entities.User> Load()
+        public List<User> Load()
         {
             return _context.Users.ToList();
         }
 
-        public void UpdateUser(Domain.Entities.User user)
+        public void UpdateUser(User user)
         {
             var existingUser = _context.Users.Find(user.Id);
             if (existingUser != null)
