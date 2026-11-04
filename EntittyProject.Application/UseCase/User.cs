@@ -11,27 +11,27 @@ using EntityProject.Domain.Entities;
 
 namespace EntityProject.Application.Usecase.UserUseCase
 {
-    public class UserUseCase
+    public class User
     {
         private readonly IDataBaseContext _context;
 
-        public UserUseCase(IDataBaseContext context)
+        public User(IDataBaseContext context)
         {
             _context = context;
         }
 
-        public void AddUser(User user)
+        public void AddUser(Domain.Entities.User user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
         }
 
-        public List<User> Load()
+        public List<Domain.Entities.User> Load()
         {
             return _context.Users.ToList();
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(Domain.Entities.User user)
         {
             var existingUser = _context.Users.Find(user.UserId);
             if (existingUser != null)
