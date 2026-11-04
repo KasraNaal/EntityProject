@@ -18,5 +18,17 @@ namespace EntityProject.Application.Tests
             // Assert
             Assert.AreEqual("test1234@", result);
         }
+
+        [TestMethod]
+        public void PasswordValidation_ShouldReturnError_WhenDoesNot8Character()
+        {
+            // Arrange
+            var userValidation = new UserValidation();
+            var password = "test@";
+            // Act
+            var result = userValidation.PasswordValidation(password);
+            // Assert
+            Assert.AreEqual("Your password should be more than 8 characters and contains @", result);
+        }
     }
 }
