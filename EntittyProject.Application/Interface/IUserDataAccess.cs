@@ -7,7 +7,7 @@ using EntityProject.Domain.Entities;
 
 namespace EntittyProject.Application.Interface
 {
-    public interface IDataAccess
+    public interface IUserDataAccess
     {
         void AddUser(User user);
         List<User> Load();

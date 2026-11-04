@@ -12,7 +12,7 @@ using EntittyProject.Application.Interface;
 
 namespace EntityProject.Persistence.DataAccess
 {
-    public class UserDataAccess: IDataAccess
+    public class UserDataAccess: IUserDataAccess
     {
         private readonly IDataBaseContext _context;
 
