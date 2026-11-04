@@ -33,7 +33,7 @@ namespace EntityProject.Application.Usecase.UserUseCase
 
         public void UpdateUser(Domain.Entities.User user)
         {
-            var existingUser = _context.Users.Find(user.UserId);
+            var existingUser = _context.Users.Find(user.Id);
             if (existingUser != null)
             {
                 existingUser.FirstName = user.FirstName;
