@@ -40,7 +40,6 @@ namespace EntityProject.Application.Usecase.UserUseCase
                 existingUser.LastName = user.LastName;
                 existingUser.UserName = user.UserName;
                 existingUser.Password = user.Password;
-                existingUser.Birthday = user.Birthday;
                 _context.SaveChanges();
             }
         }

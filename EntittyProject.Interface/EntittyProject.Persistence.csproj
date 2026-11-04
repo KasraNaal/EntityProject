@@ -7,8 +7,8 @@
     <ProjectGuid>{0501D129-9D53-4E28-B0C8-800F674234A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntittyProject.Interface</RootNamespace>
-    <AssemblyName>EntittyProject.Interface</AssemblyName>
+    <RootNamespace>EntittyProject.Persistence</RootNamespace>
+    <AssemblyName>EntittyProject.Persistence</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

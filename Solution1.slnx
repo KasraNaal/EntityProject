@@ -6,7 +6,7 @@
   </Folder>
   <Folder Name="/Src/Infrastructure/">
     <Project Path="EntittyProject.Infrastructure/EntittyProject.Infrastructure.csproj" Id="e684d72e-2bda-4b51-b4e5-a9c81a1855d5" />
-    <Project Path="EntittyProject.Interface/EntittyProject.Interface.csproj" Id="0501d129-9d53-4e28-b0c8-800f674234a4" />
+    <Project Path="EntittyProject.Interface/EntittyProject.Persistence.csproj" Id="0501d129-9d53-4e28-b0c8-800f674234a4" />
   </Folder>
   <Folder Name="/Src/Presentation/">
     <Project Path="EndPoint.Site/EndPoint.Site.csproj" Id="43488ff4-9e45-45cd-b89c-51d34de3adbe" />
