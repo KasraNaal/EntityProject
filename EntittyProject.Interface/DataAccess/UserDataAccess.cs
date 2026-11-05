@@ -14,9 +14,9 @@ namespace EntityProject.Persistence.DataAccess
 {
     public class UserDataAccess: IUserDataAccess
     {
-        private readonly IDataBaseContext _context;
+        private readonly IDb _context;
 
-        public UserDataAccess(IDataBaseContext context)
+        public UserDataAccess(IDb context)
         {
             _context = context;
         }

@@ -8,7 +8,7 @@ using EntityProject.Domain.Entities;
 
 namespace EntityProject.Application.Interface
 {
-    public interface IDataBaseContext
+    public interface IDb
     {
         DbSet<User> Users { get; set; }
 

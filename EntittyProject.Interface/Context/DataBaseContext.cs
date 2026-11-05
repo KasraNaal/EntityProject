@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EntityProject.Persistence.Contexts
 {
-    public class DataBaseContext : DbContext, IDataBaseContext
+    public class DataBaseContext : DbContext, IDb
     {
         public DataBaseContext() : base("name=DataBaseContext")
         {

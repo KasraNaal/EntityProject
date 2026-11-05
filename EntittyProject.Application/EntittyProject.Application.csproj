@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\IDataBaseContext.cs" />
+    <Compile Include="Interface\IDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\IUserDataAccess.cs" />
     <Compile Include="UseCase\UserValidation.cs" />
