@@ -40,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +52,24 @@
   <ItemGroup>
     <Compile Include="Context\DataBaseContext.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
+    <Compile Include="DataBase-Frist\EntityFrameworkDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameworkDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase-Frist\EntityFrameworkDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameworkDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase-Frist\EntityFrameworkDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameworkDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase-Frist\User.cs">
+      <DependentUpon>EntityFrameworkDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202611050752135_Init.cs" />
     <Compile Include="Migrations\202611050752135_Init.Designer.cs">
       <DependentUpon>202611050752135_Init.cs</DependentUpon>
@@ -59,6 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="DataBase-Frist\EntityFrameworkDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityFrameworkDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataBase-Frist\EntityFrameworkDataModel.edmx.diagram">
+      <DependentUpon>EntityFrameworkDataModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +102,22 @@
     <EmbeddedResource Include="Migrations\202611050752135_Init.resx">
       <DependentUpon>202611050752135_Init.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataBase-Frist\EntityFrameworkDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameworkDataModel.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameworkDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataBase-Frist\EntityFrameworkDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameworkDataModel.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameworkDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
