@@ -342,3 +342,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+# NuGet Packages
+**/[Pp]ackages/
+**/.nuget/packages/
+
+# NuGet package files
+*.nupkg
+*.snupkg
