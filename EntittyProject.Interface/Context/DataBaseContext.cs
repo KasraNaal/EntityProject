@@ -14,7 +14,7 @@ namespace EntityProject.Persistence.Contexts
     {
         public DataBaseContext() : base("name=DataBaseContext")
         {
-
+            Database.SetInitializer<DataBaseContext>(null);
         }
 
         public DbSet<User> Users { get; set; }
