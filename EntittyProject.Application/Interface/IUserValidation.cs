@@ -9,6 +9,6 @@ namespace EntittyProject.Application.Interface
 {
     public interface IUserValidation
     {
-        string PasswordValidation(UserRegisterDto user);
+        string PasswordValidation(string password);
     }
 }

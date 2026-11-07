@@ -10,9 +10,9 @@ namespace EntittyProject.Application.UseCase
 {
     public class UserValidation: IUserValidation
     {
-        public string PasswordValidation(UserRegisterDto user)
+        public string PasswordValidation(string password)
         {
-            if (!(user.Password.Count() >= 8) || !(user.Password.Contains('@')))
+            if (!(password.Count() >= 8) || !(password.Contains('@')))
             {
                 return "Your password should be more than 8 characters and contains @";
             }
