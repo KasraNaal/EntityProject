@@ -100,6 +100,18 @@
       <Project>{93bb737f-ee76-4ada-a590-4122c33e2109}</Project>
       <Name>EntittyProject.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntittyProject.Domain\EntittyProject.Domain.csproj">
+      <Project>{72e20837-60b3-488a-8e16-bd0974f1fcbc}</Project>
+      <Name>EntittyProject.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntittyProject.Interface\EntittyProject.Persistence.csproj">
+      <Project>{0501d129-9d53-4e28-b0c8-800f674234a4}</Project>
+      <Name>EntittyProject.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityProject.Application.Tests\EntityProject.Application.Tests.csproj">
+      <Project>{9294cfbb-21ce-4102-a47d-eff6354ca72a}</Project>
+      <Name>EntityProject.Application.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

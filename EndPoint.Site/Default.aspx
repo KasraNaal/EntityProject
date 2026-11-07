@@ -21,9 +21,11 @@
         <asp:TextBox ID="txtbUserName" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
-        <asp:TextBox ID="txtbPassword" runat="server" OnTextChanged="txtbPassword_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtbPassword" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="btnSubmitUser" runat="server" OnClick="btnSubmitUser_Click" Text="Submit" />
+        <br />
+        <asp:Label ID="lblMessege" runat="server"></asp:Label>
     </form>
 </body>
 </html>
