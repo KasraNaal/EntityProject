@@ -11,7 +11,7 @@ namespace EntityProject.Application.Tests
         public void PasswordValidation_ShouldReturnPassword_WhenIsValid()
         {
             // Arrange
-            var userValidation = new UserValidation();
+            var userValidation = new CreatUser();
             var password = "test1234@";
             // Act
             var result = userValidation.PasswordValidation(password);
@@ -23,7 +23,7 @@ namespace EntityProject.Application.Tests
         public void PasswordValidation_ShouldReturnError_WhenDoesNot8Character()
         {
             // Arrange
-            var userValidation = new UserValidation();
+            var userValidation = new CreatUser();
             var password = "test@";
             // Act
             var result = userValidation.PasswordValidation(password);
@@ -35,7 +35,7 @@ namespace EntityProject.Application.Tests
         public void PasswordValidation_ShouldReturnError_WhenDoesNotContainAt()
         {
             // Arrange
-            var userValidation = new UserValidation();
+            var userValidation = new CreatUser();
             var password = "test1234";
             // Act
             var result = userValidation.PasswordValidation(password);
