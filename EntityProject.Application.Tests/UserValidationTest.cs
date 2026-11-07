@@ -1,6 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using EntittyProject.Application.DTO;
 using EntittyProject.Application.UseCase;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace EntityProject.Application.Tests
 {
@@ -11,7 +12,7 @@ namespace EntityProject.Application.Tests
         public void PasswordValidation_ShouldReturnPassword_WhenIsValid()
         {
             // Arrange
-            var userValidation = new CreatUser();
+            var userValidation = new UserValidation();
             var password = "test1234@";
             // Act
             var result = userValidation.PasswordValidation(password);
@@ -23,7 +24,7 @@ namespace EntityProject.Application.Tests
         public void PasswordValidation_ShouldReturnError_WhenDoesNot8Character()
         {
             // Arrange
-            var userValidation = new CreatUser();
+            var userValidation = new UserValidation();
             var password = "test@";
             // Act
             var result = userValidation.PasswordValidation(password);
@@ -35,7 +36,7 @@ namespace EntityProject.Application.Tests
         public void PasswordValidation_ShouldReturnError_WhenDoesNotContainAt()
         {
             // Arrange
-            var userValidation = new CreatUser();
+            var userValidation = new UserValidation();
             var password = "test1234";
             // Act
             var result = userValidation.PasswordValidation(password);
