@@ -22,6 +22,8 @@
         <br />
         <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
         <asp:TextBox ID="txtbPassword" runat="server" OnTextChanged="txtbPassword_TextChanged"></asp:TextBox>
+        <br />
+        <asp:Button ID="btnSubmitUser" runat="server" OnClick="btnSubmitUser_Click" Text="Submit" />
     </form>
 </body>
 </html>
