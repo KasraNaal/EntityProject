@@ -35,6 +35,12 @@
         <asp:RegularExpressionValidator ID="evPassword" runat="server" ErrorMessage="lower, upper, number and (@,#,$) must be entered" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$])[a-zA-Z\d@#$]+$" ControlToValidate="txtbPassword" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:RegularExpressionValidator>            
         <br />
 
+        <asp:Label ID="lblConfirmPassword" runat="server" style="direction: ltr" Text="Confirm Password: "></asp:Label>
+        <asp:TextBox ID="txtbConfirmPassword" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="fvConfirmPassword" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtbConfirmPassword" ForeColor="Red"></asp:RequiredFieldValidator>
+        <asp:CompareValidator ID="cvConfirmPassword" runat="server" ErrorMessage="not matched" ControlToValidate="txtbConfirmPassword" ControlToCompare="txtbPassword" Operator="Equal" Type="String" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:CompareValidator>
+        <br />
+
         <asp:Button ID="btnSubmitUser" runat="server" OnClick="btnSubmitUser_Click" Text="Submit" />
         <br />
 
