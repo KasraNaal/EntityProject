@@ -10,6 +10,7 @@ namespace EntityProject.Application.Interface
 {
     public interface IDb
     {
+        DbSet<User> Users { get; set; }
 
         int SaveChanges();
     }

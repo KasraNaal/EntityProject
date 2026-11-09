@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\UserRegisterDto.cs" />
     <Compile Include="Interface\IDb.cs" />
     <Compile Include="UserManagment\IUserRegisterService.cs" />
     <Compile Include="UserManagment\IUserValidation.cs" />

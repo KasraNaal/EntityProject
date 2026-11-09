@@ -14,44 +14,43 @@ namespace EntityProject.Persistence.DataAccess
 {
     public class UserDataAccess: IUserDataAccess
     {
-        private readonly IDb _context;
+        private readonly IDb _db;
 
-        public UserDataAccess(IDb context)
+        public UserDataAccess(IDb db)
         {
-            _context = context;
+            _db = db;
         }
 
         public void AddUser(User user)
         {
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _db.Users.Add(user);
         }
 
         public List<User> Load()
         {
-            return _context.Users.ToList();
+            return _db.Users.ToList();
         }
 
         public void UpdateUser(User user)
         {
-            var existingUser = _context.Users.Find(user.Id);
+            var existingUser = _db.Users.Find(user.Id);
             if (existingUser != null)
             {
                 existingUser.FirstName = user.FirstName;
                 existingUser.LastName = user.LastName;
                 existingUser.UserName = user.UserName;
                 existingUser.Password = user.Password;
-                _context.SaveChanges();
+                _db.SaveChanges();
             }
         }
 
         public void DeleteUser(int Id)
         {
-            var user = _context.Users.Find(Id);
+            var user = _db.Users.Find(Id);
             if (user != null)
             {
-                _context.Users.Remove(user);
-                _context.SaveChanges();
+                _db.Users.Remove(user);
+                _db.SaveChanges();
             }
         }
     }

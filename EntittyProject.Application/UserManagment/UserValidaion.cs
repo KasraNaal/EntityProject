@@ -1,5 +1,4 @@
-﻿using EntittyProject.Application.DTO;
-using EntittyProject.Application.Interface;
+﻿using EntittyProject.Application.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
