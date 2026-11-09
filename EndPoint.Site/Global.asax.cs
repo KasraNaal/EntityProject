@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using EntityProject.Persistence.DataAccess;
 using EntityProject.Persistence.Contexts;
+using EntityProject.Application.Interface;
 
 namespace EndPoint.Site
 {
@@ -20,7 +21,7 @@ namespace EndPoint.Site
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<DataBaseContext>().As<EntityProject.Application.Interface.IDb>().InstancePerLifetimeScope();
+            builder.RegisterType<DataBaseContext>().As<IDb>().InstancePerLifetimeScope();
             builder.RegisterType<UserRegisterService>().As<IUserRegisterService>().InstancePerLifetimeScope();
             builder.RegisterType<UserValidation>().As<IUserValidation>().InstancePerLifetimeScope();
             builder.RegisterType<UserDataAccess>().As<IUserDataAccess>().InstancePerLifetimeScope();
