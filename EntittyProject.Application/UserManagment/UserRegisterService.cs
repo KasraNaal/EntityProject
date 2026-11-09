@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using EntityProject.Application.Interface;
 using EntittyProject.Application.DTO;
 
-namespace EntittyProject.Application.UseCase
+namespace EntittyProject.Application.UserManagment
 {
-    public class UserRegisterService
+    public class UserRegisterService: IUserRegisterService
     {
         private readonly IUserValidation _userValidation;
         private readonly IUserDataAccess _userDataAccess;
