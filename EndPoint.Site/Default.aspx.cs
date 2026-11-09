@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Autofac;
 using EntittyProject.Application.DTO;
 using EntittyProject.Application.Interface;
 using EntittyProject.Application.UseCase;
+using EntittyProject.Application.UserManagment;
 using EntityProject.Application.Interface;
 using EntityProject.Persistence.Contexts;
 using EntityProject.Persistence.DataAccess;
+
 
 namespace EndPoint.Site
 {
     public partial class Default : System.Web.UI.Page
     {
+        public IUserRegisterService userRegisterService { get; set; }
+        public IUserValidation uservakl { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnSubmitUser_Click(object sender, EventArgs e)
@@ -31,15 +37,14 @@ namespace EndPoint.Site
                 Password = txtbPassword.Text
             };
 
-            IDb dbContext = new DataBaseContext();
-            IUserDataAccess userDataAccess = new UserDataAccess(dbContext);
-            IUserValidation userValidation = new UserValidation();
+            using (var scope = Global.Container.BeginLifetimeScope())
+            {
+                userRegisterService = scope.Resolve<IUserRegisterService>();
 
-            UserRegisterService userRegisterService = new UserRegisterService(userValidation, userDataAccess);
+                var message = userRegisterService.RegisterUser(user);
 
-            var message = userRegisterService.RegisterUser(user);
-
-            lblMessege.Text = message;
+                lblMessege.Text = message;
+            }
         }
     }
 }
