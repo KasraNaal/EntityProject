@@ -21,7 +21,7 @@ namespace EntittyProject.Application.UserManagment
             _db = db;
         }
 
-        public string RegisterUser(UserRegisterDto user)
+        public string RegisterUser(UserRegisterRequest user)
         {
             var validationResult = _userValidation.PasswordValidation(user.Password);
             if (validationResult != "Password confirmed")

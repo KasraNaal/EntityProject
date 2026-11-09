@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Autofac;
-using EntittyProject.Application.DTO;
 using EntittyProject.Application.Interface;
 using EntittyProject.Application.UseCase;
 using EntittyProject.Application.UserManagment;
@@ -29,7 +28,7 @@ namespace EndPoint.Site
 
         protected void btnSubmitUser_Click(object sender, EventArgs e)
         {
-            UserRegisterDto user = new UserRegisterDto
+            UserRegisterRequest user = new UserRegisterRequest
             {
                 FirstName = txtbFirstName.Text,
                 LastName = txtbLastName.Text,

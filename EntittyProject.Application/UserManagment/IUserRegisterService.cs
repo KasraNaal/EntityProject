@@ -1,5 +1,4 @@
-﻿using EntittyProject.Application.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +8,6 @@ namespace EntittyProject.Application.UserManagment
 {
     public interface IUserRegisterService
     {
-        string RegisterUser(UserRegisterDto user);
+        string RegisterUser(UserRegisterRequest user);
     }
 }
