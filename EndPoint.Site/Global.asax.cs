@@ -56,7 +56,7 @@ namespace EndPoint.Site
 
         protected void Application_End(object sender, EventArgs e)
         {
-
+            Container?.Dispose();
         }
     }
 }

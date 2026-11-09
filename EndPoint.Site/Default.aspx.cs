@@ -20,7 +20,7 @@ namespace EndPoint.Site
     public partial class Default : System.Web.UI.Page
     {
         public IUserRegisterService userRegisterService { get; set; }
-        public IUserValidation uservakl { get; set; }
+        public IUserValidation userValidation { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             
