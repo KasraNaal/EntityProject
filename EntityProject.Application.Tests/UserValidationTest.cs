@@ -1,5 +1,4 @@
-﻿using EntittyProject.Application.DTO;
-using EntittyProject.Application.UseCase;
+﻿using EntittyProject.Application.UseCase;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
