@@ -23,7 +23,7 @@ namespace EndPoint.Site
         public IUserValidation userValidation { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            userRegisterService = Global.Container.Resolve<IUserRegisterService>();
         }
 
         protected void btnSubmitUser_Click(object sender, EventArgs e)
