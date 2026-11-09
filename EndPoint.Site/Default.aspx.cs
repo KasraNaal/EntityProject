@@ -37,14 +37,11 @@ namespace EndPoint.Site
                 Password = txtbPassword.Text
             };
 
-            using (var scope = Global.Container.BeginLifetimeScope())
-            {
-                userRegisterService = scope.Resolve<IUserRegisterService>();
-
+          
                 var message = userRegisterService.RegisterUser(user);
 
                 lblMessege.Text = message;
-            }
+            
         }
     }
 }
