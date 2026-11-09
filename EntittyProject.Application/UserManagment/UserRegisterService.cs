@@ -2,11 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntityProject.Application.Interface;
-using EntittyProject.Application.DTO;
 
 namespace EntittyProject.Application.UserManagment
 {
@@ -14,11 +12,13 @@ namespace EntittyProject.Application.UserManagment
     {
         private readonly IUserValidation _userValidation;
         private readonly IUserDataAccess _userDataAccess;
+        private readonly IDb _db;
 
-        public UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess)
+        public UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db)
         {
             _userValidation = userValidation;
             _userDataAccess = userDataAccess;
+            _db = db;
         }
 
         public string RegisterUser(UserRegisterDto user)
@@ -28,6 +28,7 @@ namespace EntittyProject.Application.UserManagment
             {
                 return validationResult;
             }
+
             var newUser = new EntityProject.Domain.Entities.User
             {
                 FirstName = user.FirstName,
@@ -37,6 +38,8 @@ namespace EntittyProject.Application.UserManagment
             };
            
             _userDataAccess.AddUser(newUser);
+            _db.SaveChanges();
+
             return "User registered successfully";
         }
     }
