@@ -53,5 +53,10 @@ namespace EntityProject.Persistence.DataAccess
                 _db.SaveChanges();
             }
         }
+
+        public bool DoesUserExist(string userName)
+        {
+            return _db.Users.Any(u => u.UserName == userName);
+        }
     }
 }

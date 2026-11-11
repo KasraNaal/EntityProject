@@ -36,7 +36,12 @@ namespace EntittyProject.Application.UserManagment
                 UserName = user.UserName,
                 Password = user.Password
             };
-           
+
+            if (_userDataAccess.DoesUserExist(user.UserName))
+            {
+                return "User already exists";
+            }
+
             _userDataAccess.AddUser(newUser);
             _db.SaveChanges();
 
