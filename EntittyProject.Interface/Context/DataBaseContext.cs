@@ -22,7 +22,7 @@ namespace EntityProject.Persistence.Contexts
         public DbSet<User> Users { get; set; }
 
 
-        IEntity IDb.Add<TEntity>(TEntity entity)
+        TEntity IDb.Add<TEntity>(TEntity entity)
         {
             return base.Set<TEntity>().Add(entity);
         }
