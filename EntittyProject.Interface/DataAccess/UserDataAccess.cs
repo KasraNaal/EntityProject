@@ -63,5 +63,18 @@ namespace EntityProject.Persistence.DataAccess
         {
             return _db.Users.Any(u => u.Id == Id);
         }
+
+        public List<User> Search(string searchUser = null)
+        {
+            if (string.IsNullOrWhiteSpace(searchUser))
+            {
+                return _db.Query<User>().ToList();
+            }
+
+            return _db.Users
+                .Where(s => s.UserName.Contains(searchUser)
+                || s.FirstName.Contains(searchUser)
+                || s.LastName.Contains(searchUser)).ToList();
+        }
     }
 }
