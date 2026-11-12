@@ -72,9 +72,9 @@ namespace EntityProject.Persistence.DataAccess
             }
 
             return _db.Users
-                .Where(s => s.UserName.Contains(searchUser)
-                || s.FirstName.Contains(searchUser)
-                || s.LastName.Contains(searchUser)).ToList();
+                .Where(s => s.UserName.ToUpper().Contains(searchUser)
+                         || s.FirstName.ToUpper().Contains(searchUser)
+                         || s.LastName.ToUpper().Contains(searchUser)).ToList();
         }
     }
 }
