@@ -54,6 +54,7 @@ namespace EntityProject.Persistence.Contexts
         void IDb.Update<TEntity>(TEntity entity)
         {
             base.Set<TEntity>().Attach(entity);
+            base.Entry(entity).State = EntityState.Modified;
         }
     }
 }
