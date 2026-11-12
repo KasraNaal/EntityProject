@@ -12,7 +12,7 @@ namespace EntittyProject.Application.Interface
         void AddUser(User user);
         List<User> Load();
         void UpdateUser(User user);
-        void DeleteUser(string userName);
+        void DeleteUser(int id);
         bool DoesUserExist(string userName);
         bool DoesUserExist(int Id);
     }
