@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IDb.cs" />
+    <Compile Include="UserManagment\DeleteUser.cs" />
+    <Compile Include="UserManagment\IDeleteUser.cs" />
+    <Compile Include="UserManagment\ISearchUser.cs" />
     <Compile Include="UserManagment\IUserExist.cs" />
     <Compile Include="UserManagment\IUserRegisterService.cs" />
     <Compile Include="UserManagment\IUserValidation.cs" />
