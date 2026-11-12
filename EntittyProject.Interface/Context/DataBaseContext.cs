@@ -43,7 +43,7 @@ namespace EntityProject.Persistence.Contexts
 
         IQueryable<TEntity> IDb.Query<TEntity>()
         {
-            return base.Set<TEntity>().AsQueryable();
+            return base.Set<TEntity>().AsNoTracking();
         }
 
         IQueryable<TEntity> IDb.Set<TEntity>()
