@@ -21,9 +21,11 @@ namespace EndPoint.Site
     {
         public IUserRegisterService userRegisterService { get; set; }
         public IUserValidation userValidation { get; set; }
+        public IUserDataAccess userDataAccess { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             userRegisterService = Global.Container.Resolve<IUserRegisterService>();
+            userDataAccess = Global.Container.Resolve<IUserDataAccess>();
         }
 
         protected void btnSubmitUser_Click(object sender, EventArgs e)
@@ -41,6 +43,13 @@ namespace EndPoint.Site
 
                 lblMessege.Text = message;
             
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            userDataAccess.DeleteUser(int.Parse(txtbDeleteUserId.Text));
+
+            lblDeleteMessage.Text = "User deleted successfully!";
         }
     }
 }

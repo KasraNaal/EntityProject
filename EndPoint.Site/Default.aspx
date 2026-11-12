@@ -45,6 +45,16 @@
         <br />
 
         <asp:Label ID="lblMessege" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="lblDelete" runat="server" Text="Delete User"></asp:Label>
+        <br />
+        <asp:Label ID="lblDeleteUser" runat="server" Text="UserId: "></asp:Label>
+        <asp:TextBox ID="txtbDeleteUserId" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+        <br />
+        <asp:Label ID="lblDeleteMessage" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
