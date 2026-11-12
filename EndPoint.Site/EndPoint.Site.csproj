@@ -129,6 +129,10 @@
       <Project>{93bb737f-ee76-4ada-a590-4122c33e2109}</Project>
       <Name>EntittyProject.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntittyProject.Domain\EntittyProject.Domain.csproj">
+      <Project>{72e20837-60b3-488a-8e16-bd0974f1fcbc}</Project>
+      <Name>EntittyProject.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntittyProject.Interface\EntittyProject.Persistence.csproj">
       <Project>{0501d129-9d53-4e28-b0c8-800f674234a4}</Project>
       <Name>EntittyProject.Persistence</Name>

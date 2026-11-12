@@ -13,6 +13,7 @@ using EntittyProject.Application.UserManagment;
 using EntityProject.Application.Interface;
 using EntityProject.Persistence.Contexts;
 using EntityProject.Persistence.DataAccess;
+using EntityProject.Domain.Entities;
 
 
 namespace EndPoint.Site
@@ -50,6 +51,16 @@ namespace EndPoint.Site
             userDataAccess.DeleteUser(int.Parse(txtbDeleteUserId.Text));
 
             lblDeleteMessage.Text = "User deleted successfully!";
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            string searchUser = txtbSearchUserName.Text;
+            List<User> searchResults = userDataAccess.Search(searchUser);
+
+            dgvShowUsers.DataSource = searchResults;
+            dgvShowUsers.DataBind();
         }
     }
 }
