@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using EntityProject.Application.Interface;
+using EntityProject.Domain.Entities;
 
 namespace EntittyProject.Application.UserManagment
 {
@@ -29,7 +30,7 @@ namespace EntittyProject.Application.UserManagment
                 return validationResult;
             }
 
-            var newUser = new EntityProject.Domain.Entities.User
+            var newUser = new User
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,

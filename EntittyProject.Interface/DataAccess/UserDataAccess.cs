@@ -8,32 +8,39 @@ using System.Collections.Generic;
 using System.Linq;
 using EntityProject.Domain.Entities;
 using EntittyProject.Application.Interface;
+using EntittyProject.Application.UserManagment;
 
 
 namespace EntityProject.Persistence.DataAccess
 {
-    public class UserDataAccess: IUserDataAccess
+    public class UserDataAccess : IUserDataAccess
     {
         private readonly IDb _db;
+        private readonly ISearchUsers _searchUsers;
 
-        public UserDataAccess(IDb db)
+        public UserDataAccess(IDb db, ISearchUsers searchUsers)
         {
             _db = db;
+            _searchUsers = searchUsers;
         }
 
         public void AddUser(User user)
         {
-            _db.Users.Add(user);
+            _db.Add(user);
         }
 
         public List<User> Load()
         {
-            return _db.Users.ToList();
+            return _searchUsers.Respond().ToList();
         }
 
         public void UpdateUser(User user)
         {
-            var existingUser = _db.Users.Find(user.Id);
+            var existingUser = _searchUsers.Respond(new ISearchUsers.Request
+            {
+                Id = user.Id
+            }).SingleOrDefault();
+
             if (existingUser != null)
             {
                 existingUser.FirstName = user.FirstName;
@@ -46,10 +53,10 @@ namespace EntityProject.Persistence.DataAccess
 
         public void DeleteUser(int Id)
         {
-            var user = _db.Users.Find(Id);
+            var user = _db.Find(Id);
             if (user != null)
             {
-                _db.Users.Remove(user);
+                _db.Remove(user);
                 _db.SaveChanges();
             }
         }
