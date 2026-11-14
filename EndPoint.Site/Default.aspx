@@ -77,15 +77,16 @@
         <br />
         <br />
 
-        <asp:GridView ID="dgvShowUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" >
+        <asp:GridView ID="dgvShowUsers" runat="server" AutoGenerateColumns="False" >
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
+                <asp:BoundField DataField="PersonId" HeaderText="PersonId" SortExpression="PersonId" />
                 <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
                 <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
             </Columns>
         </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:EntityProjectDataBase-FirstConnectionString2 %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:EntityProjectDataBase-FirstConnectionString2 %>" ProviderName="<%$ ConnectionStrings:EntityProjectDataBase-FirstConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM [People]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EntityProjectDataBase-FirstConnectionString %>" ProviderName="<%$ ConnectionStrings:EntityProjectDataBase-FirstConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
     </form>
 </body>
