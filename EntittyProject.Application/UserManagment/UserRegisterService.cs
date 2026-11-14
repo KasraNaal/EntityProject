@@ -30,12 +30,17 @@ namespace EntittyProject.Application.UserManagment
                 return validationResult;
             }
 
-            var newUser = new User
+            var newPerson = new Person
             {
                 FirstName = user.FirstName,
-                LastName = user.LastName,
+                LastName = user.LastName
+            };
+
+            var newUser = new User
+            {
                 UserName = user.UserName,
-                Password = user.Password
+                Password = user.Password,
+                Person = newPerson
             };
 
             if (_userDataAccess.DoesUserExist(user.UserName))
