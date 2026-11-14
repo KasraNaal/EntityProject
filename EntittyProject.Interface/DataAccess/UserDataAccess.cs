@@ -43,8 +43,6 @@ namespace EntityProject.Persistence.DataAccess
 
             if (existingUser != null)
             {
-                existingUser.FirstName = user.FirstName;
-                existingUser.LastName = user.LastName;
                 existingUser.UserName = user.UserName;
                 existingUser.Password = user.Password;
                 _db.SaveChanges();
@@ -53,22 +51,27 @@ namespace EntityProject.Persistence.DataAccess
 
         public void DeleteUser(int Id)
         {
-            var user = _db.Find(Id);
+            var user = _searchUsers.Respond(new ISearchUsers.Request
+            {
+                Id = Id
+            }).SingleOrDefault();
+
+
             if (user != null)
             {
-                _db.Remove(user);
+                _db.Delete(user);
                 _db.SaveChanges();
             }
         }
 
         public bool DoesUserExist(string userName)
         {
-            return _db.Users.Any(u => u.UserName == userName);
+            return _db.Query<User>().Any(u => u.UserName == userName);
         }
 
         public bool DoesUserExist(int Id)
         {
-            return _db.Users.Any(u => u.Id == Id);
+            return _db.Query<User>().Any(u => u.Id == Id);
         }
 
         public List<User> Search(string searchUser = null)
@@ -78,10 +81,8 @@ namespace EntityProject.Persistence.DataAccess
                 return _db.Query<User>().ToList();
             }
 
-            return _db.Users
-                .Where(s => s.UserName.ToUpper().Contains(searchUser)
-                         || s.FirstName.ToUpper().Contains(searchUser)
-                         || s.LastName.ToUpper().Contains(searchUser)).ToList();
+            return _db.Query<User>()
+                .Where(s => s.UserName.ToUpper().Contains(searchUser)).ToList();
         }
     }
 }
