@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
     <title>User</title>
 </head>
 <body>
     <form id="GetUser" runat="server">
         <div>
-
         </div>
         <asp:Label ID="lblFirstName" runat="server" Text="FirstName: "></asp:Label>
         <asp:TextBox ID="txtbFirstName" runat="server"></asp:TextBox>
@@ -20,7 +21,7 @@
         <asp:Label ID="lblLastName" runat="server" Text="LastName: "></asp:Label>
         <asp:TextBox ID="txtbLastName" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="fvLastName" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtbLastName" ForeColor="Red"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="evLastName" runat="server" ErrorMessage="Enter a-z or A-Z" ValidationExpression="^[a-zA-Z]+$" ControlToValidate="txtbLastName" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:RegularExpressionValidator>   
+        <asp:RegularExpressionValidator ID="evLastName" runat="server" ErrorMessage="Enter a-z or A-Z" ValidationExpression="^[a-zA-Z]+$" ControlToValidate="txtbLastName" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:RegularExpressionValidator>
         <br />
 
         <asp:Label ID="lblUserName" runat="server" Text="UserName: "></asp:Label>
@@ -32,16 +33,16 @@
         <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
         <asp:TextBox ID="txtbPassword" runat="server" ValidationGroup="RegisterGroup"></asp:TextBox>
         <asp:RequiredFieldValidator ID="fvPassword" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtbPassword" ForeColor="Red"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="evPassword" runat="server" ErrorMessage="lower, upper, number and (@,#,$) must be entered" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$])[a-zA-Z\d@#$]+$" ControlToValidate="txtbPassword" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:RegularExpressionValidator>            
+        <asp:RegularExpressionValidator ID="evPassword" runat="server" ErrorMessage="lower, upper, number and (@,#,$) must be entered" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$])[a-zA-Z\d@#$]+$" ControlToValidate="txtbPassword" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:RegularExpressionValidator>
         <br />
 
-        <asp:Label ID="lblConfirmPassword" runat="server" style="direction: ltr" Text="Confirm Password: "></asp:Label>
+        <asp:Label ID="lblConfirmPassword" runat="server" Style="direction: ltr" Text="Confirm Password: "></asp:Label>
         <asp:TextBox ID="txtbConfirmPassword" runat="server" ValidationGroup="RegisterGroup"></asp:TextBox>
         <asp:RequiredFieldValidator ID="fvConfirmPassword" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtbConfirmPassword" ForeColor="Red"></asp:RequiredFieldValidator>
         <asp:CompareValidator ID="cvConfirmPassword" runat="server" ErrorMessage="not matched" ControlToValidate="txtbConfirmPassword" ControlToCompare="txtbPassword" Operator="Equal" Type="String" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:CompareValidator>
         <br />
 
-        <asp:Button ID="btnSubmitUser" runat="server" OnClick="btnSubmitUser_Click" Text="Submit" ValidationGroup="RegisterGroup"/>
+        <asp:Button ID="btnSubmitUser" runat="server" OnClick="btnSubmitUser_Click" Text="Submit" ValidationGroup="RegisterGroup" class="btn-text theme-primary"/>
         <br />
 
         <asp:Label ID="lblMessege" runat="server" ValidationGroup="RegisterGroup"></asp:Label>
@@ -53,12 +54,12 @@
         <br />
 
         <asp:Label ID="lblDeleteUser" runat="server" Text="UserId: "></asp:Label>
-        <asp:TextBox ID="txtbDeleteUserId" runat="server" ValidationGroup ="DeleteGroup"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="fvDeleteUser" runat="server" ErrorMessage="Enter something BROOO" ControlToValidate="txtbDeleteUserId" ForeColor="Red" Display="Dynamic" ValidationGroup ="DeleteGroup"></asp:RequiredFieldValidator>
+        <asp:TextBox ID="txtbDeleteUserId" runat="server" ValidationGroup="DeleteGroup"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="fvDeleteUser" runat="server" ErrorMessage="Enter something BROOO" ControlToValidate="txtbDeleteUserId" ForeColor="Red" Display="Dynamic" ValidationGroup="DeleteGroup"></asp:RequiredFieldValidator>
 
         <br />
 
-        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete " ValidationGroup="DeleteGroup"/>
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete " ValidationGroup="DeleteGroup" class="btn-text theme-danger"/>
         <br />
 
         <asp:Label ID="lblDeleteMessage" runat="server" ValidationGroup="DeleteGroup"></asp:Label>
@@ -73,11 +74,11 @@
         <asp:TextBox ID="txtbSearchUserName" runat="server" ValidationGroup="SearchGroup"></asp:TextBox>
         <br />
 
-        <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" ValidationGroup="SearchGroup"/>
+        <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" ValidationGroup="SearchGroup" class="btn-text theme-primary"/>
         <br />
         <br />
 
-        <asp:GridView ID="dgvShowUsers" runat="server" AutoGenerateColumns="False" >
+        <asp:GridView ID="dgvShowUsers" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                 <asp:BoundField DataField="PersonId" HeaderText="PersonId" SortExpression="PersonId" />
