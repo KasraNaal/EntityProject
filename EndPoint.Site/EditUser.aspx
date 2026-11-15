@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
     <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
     <title>EditUser</title>
+    <script src="JS/app.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -41,7 +42,7 @@
 
                     <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
 
-                    <div style="display: flex; align-items: center; gap: 5px">
+                    <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
                         <asp:TextBox ID="txtbPassword" runat="server" ValidationGroup="RegisterGroup" TextMode="Password" Style="flex: 1; min-width: 0;"></asp:TextBox>
                         <button type="button" onclick="togglePassword('<%= txtbPassword.ClientID %>', this)"
                             style="width: 34px; height: 34px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #666; border-radius: 4px; background-color: #2c2c2c; color: white;">
@@ -87,6 +88,8 @@
 
 
     </form>
+
+   
 
 
 
