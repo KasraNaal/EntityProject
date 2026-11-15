@@ -37,6 +37,24 @@
                                     <asp:BoundField DataField="PersonId" HeaderText="PersonId" SortExpression="PersonId" />
                                     <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
                                     <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
+
+
+                                    <asp:TemplateField HeaderText="Edit">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnEdit" runat="server"
+                                                CommandName="EditUser"
+                                                CommandArgument='<%# Eval("Id") %>'
+                                                CausesValidation="False"
+                                                Style="color: #ffc107; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                    
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+
+                </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:EntityProjectDataBase-FirstConnectionString2 %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>

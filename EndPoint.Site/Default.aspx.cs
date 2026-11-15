@@ -56,12 +56,26 @@ namespace EndPoint.Site
         //    lblDeleteMessage.Text = "User deleted successfully!";
         //}
 
+        protected void dgvShowUsersRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int userId = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "DeleteUser")
+            {
+                userDataAccess.DeleteUser(userId);
+            }
+
+            else if (e.CommandName == "EditUser")
+            {
+                Response.Redirect($"EditUser.aspx?id={userId}");
+            }
+        }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
 
             string searchUser = txtbSearchUserName.Text;
-            List<User> searchResults = userDataAccess.Search(searchUser);
+            List<User> searchResults = userDataAccess.Search(searchUser).ToList();
 
             dgvShowUsers.DataSource = searchResults;
             dgvShowUsers.DataBind();
