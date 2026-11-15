@@ -14,6 +14,7 @@ using EntityProject.Application.Interface;
 using EntityProject.Persistence.Contexts;
 using EntityProject.Persistence.DataAccess;
 using EntityProject.Domain.Entities;
+using System.Net;
 
 
 namespace EndPoint.Site
@@ -31,29 +32,30 @@ namespace EndPoint.Site
             searchUsers = Global.Container.Resolve<ISearchUsers>();
         }
 
-        protected void btnSubmitUser_Click(object sender, EventArgs e)
-        {
-            UserRegisterRequest user = new UserRegisterRequest
-            {
-                FirstName = txtbFirstName.Text,
-                LastName = txtbLastName.Text,
-                UserName = txtbUserName.Text,
-                Password = txtbPassword.Text
-            };
+        //protected void btnSubmitUser_Click(object sender, EventArgs e)
+        //{
+        //    UserRegisterRequest user = new UserRegisterRequest
+        //    {
+        //        FirstName = txtbFirstName.Text,
+        //        LastName = txtbLastName.Text,
+        //        UserName = txtbUserName.Text,
+        //        Password = txtbPassword.Text
+        //    };
 
-          
-                var message = userRegisterService.RegisterUser(user);
 
-                lblMessege.Text = message;
-            
-        }
+        //        var message = userRegisterService.RegisterUser(user);
 
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            userDataAccess.DeleteUser(int.Parse(txtbDeleteUserId.Text));
+        //        lblMessege.Text = message;
 
-            lblDeleteMessage.Text = "User deleted successfully!";
-        }
+        //}
+
+        //protected void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    userDataAccess.DeleteUser(int.Parse(txtbDeleteUserId.Text));
+
+        //    lblDeleteMessage.Text = "User deleted successfully!";
+        //}
+
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
