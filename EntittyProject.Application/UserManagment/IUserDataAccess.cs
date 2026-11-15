@@ -15,6 +15,7 @@ namespace EntittyProject.Application.Interface
         void DeleteUser(int id);
         bool DoesUserExist(string userName);
         bool DoesUserExist(int Id);
-        List<User> Search(string searchUser);
+        IQueryable<User> Search(string searchUser);
+        User GetUserById(int id);
     }
 }
