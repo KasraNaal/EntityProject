@@ -9,6 +9,7 @@ using System.Linq;
 using EntityProject.Domain.Entities;
 using EntittyProject.Application.Interface;
 using EntittyProject.Application.UserManagment;
+using System.Data.Entity;
 
 
 namespace EntityProject.Persistence.DataAccess
@@ -29,7 +30,7 @@ namespace EntityProject.Persistence.DataAccess
             _db.Add(user);
         }
 
-        public List<User> Load()
+        public List<User> Load()                        // remove lodaw
         {
             return _searchUsers.Respond().ToList();
         }
@@ -66,23 +67,30 @@ namespace EntityProject.Persistence.DataAccess
 
         public bool DoesUserExist(string userName)
         {
-            return _db.Query<User>().Any(u => u.UserName == userName);
+            return Search().Any(u => u.UserName == userName);
         }
 
         public bool DoesUserExist(int Id)
         {
-            return _db.Query<User>().Any(u => u.Id == Id);
+            return Search().Any(u => u.Id == Id);
         }
 
-        public List<User> Search(string searchUser = null)
+        public IQueryable<User> Search(string searchUser = null)
         {
             if (string.IsNullOrWhiteSpace(searchUser))
             {
-                return _db.Query<User>().ToList();
+                return _db.Query<User>();
             }
 
             return _db.Query<User>()
-                .Where(s => s.UserName.ToUpper().Contains(searchUser)).ToList();
+                .Where(s => s.Person.FirstName.ToUpper().Contains(searchUser) ||
+                            s.Person.LastName.ToUpper().Contains(searchUser) ||
+                            s.UserName.ToUpper().Contains(searchUser));
+        }
+
+        public User GetUserById(int id)
+        {
+            return Search().Include(u => u.Person).FirstOrDefault(u => u.Id == id);
         }
     }
 }
