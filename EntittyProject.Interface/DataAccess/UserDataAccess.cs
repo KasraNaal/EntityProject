@@ -37,17 +37,10 @@ namespace EntityProject.Persistence.DataAccess
 
         public void UpdateUser(User user)
         {
-            var existingUser = _searchUsers.Respond(new ISearchUsers.Request
-            {
-                Id = user.Id
-            }).SingleOrDefault();
+            _db.Update<User>(user);
+            _db.Update<Person>(user.Person);
 
-            if (existingUser != null)
-            {
-                existingUser.UserName = user.UserName;
-                existingUser.Password = user.Password;
-                _db.SaveChanges();
-            }
+            _db.SaveChanges();
         }
 
         public void DeleteUser(int Id)
