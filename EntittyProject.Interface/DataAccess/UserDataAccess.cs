@@ -45,15 +45,15 @@ namespace EntityProject.Persistence.DataAccess
 
         public void DeleteUser(int Id)
         {
-            var user = _searchUsers.Respond(new ISearchUsers.Request
-            {
-                Id = Id
-            }).SingleOrDefault();
-
+            var user = GetUserById(Id);
 
             if (user != null)
             {
+                var person = user.Person;
+
                 _db.Delete(user);
+                _db.Delete(person);
+
                 _db.SaveChanges();
             }
         }
