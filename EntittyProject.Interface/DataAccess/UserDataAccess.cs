@@ -30,11 +30,6 @@ namespace EntityProject.Persistence.DataAccess
             _db.Add(user);
         }
 
-        public List<User> Load()                        // remove lodaw
-        {
-            return _searchUsers.Respond().ToList();
-        }
-
         public void UpdateUser(User user)
         {
             _db.Update<User>(user);

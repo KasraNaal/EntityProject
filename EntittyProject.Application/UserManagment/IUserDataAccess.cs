@@ -10,7 +10,6 @@ namespace EntittyProject.Application.Interface
     public interface IUserDataAccess
     {
         void AddUser(User user);
-        List<User> Load();
         void UpdateUser(User user);
         void DeleteUser(int id);
         bool DoesUserExist(string userName);
