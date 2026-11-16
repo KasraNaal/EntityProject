@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using EntittyProject.Application.Interface;
+using EntittyProject.Application.UserManagment;
+using EntityProject.Application.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,38 +9,67 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EndPoint.Site
 {
     public partial class EditUser : System.Web.UI.Page
     {
-
         public IUserDataAccess userDataAccess { get; set; }
+        public IDb db { get; set; }
+        public IGetUserById getUserById { get; set; }
+        public IUpdateUser updateUser { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             userDataAccess = Global.Container.Resolve<IUserDataAccess>();
+            db = Global.Container.Resolve<IDb>();
+            getUserById = Global.Container.Resolve<IGetUserById>();
+            updateUser = Global.Container.Resolve<IUpdateUser>();
 
-
-            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+            if (!IsPostBack)
             {
-                int userId = Convert.ToInt32(Request.QueryString["id"]);
-
-                var user = userDataAccess.GetUserById(userId);
-
-
-                if (user == null)
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
-                    Response.Redirect("Default.aspx");
-                }
+                    int userId = Convert.ToInt32(Request.QueryString["id"]);
 
-                else
-                {
-                    txtbFirstName.Text = user.Person.FirstName;
-                    txtbLastName.Text = user.Person.LastName;
-                    txtbUserName.Text = user.UserName;
+                    IGetUserById.Request request = new IGetUserById.Request
+                    {
+                        Id = userId
+                    };
+
+                    var user = getUserById.Execute(request);
+
+
+                    if (user == null)
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
+                    else
+                    {
+                        txtbFirstName.Text = user.Person.FirstName;
+                        txtbLastName.Text = user.Person.LastName;
+                        txtbUserName.Text = user.UserName;
+                        txtbPassword.Attributes["value"] = user.Password;
+                    }
                 }
             }
+            
+        }
+
+        protected void btnSubmitUser_Click(object sender, EventArgs e)
+        {
+            UpdateRequest updateRequest = new UpdateRequest
+            {
+                Id = Convert.ToInt32(Request.QueryString["id"]),
+                FirstName = txtbFirstName.Text,
+                LastName = txtbLastName.Text,
+                UserName = txtbUserName.Text,
+                Password = txtbPassword.Text
+            };
+
+            updateUser.UpdateUser(updateRequest);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace EndPoint.Site
             builder.RegisterType<UserValidation>().As<IUserValidation>().InstancePerLifetimeScope();
             builder.RegisterType<UserDataAccess>().As<IUserDataAccess>().InstancePerLifetimeScope();
             builder.RegisterType<SearchUsers>().As<ISearchUsers>().InstancePerLifetimeScope();
+            builder.RegisterType<GetUserById>().As<IGetUserById>().InstancePerLifetimeScope();
+            builder.RegisterType<UpdateUser>().As<IUpdateUser>().InstancePerLifetimeScope();
 
             Container = builder.Build();
         }
