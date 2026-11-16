@@ -63,7 +63,6 @@
     <Compile Include="UserManagment\IUserDataAccess.cs" />
     <Compile Include="UserManagment\UpdateUser.cs" />
     <Compile Include="UserManagment\UserExist.cs" />
-    <Compile Include="UserManagment\UserRegisterRequest.cs" />
     <Compile Include="UserManagment\UserRegisterService.cs" />
     <Compile Include="UserManagment\UserValidaion.cs" />
   </ItemGroup>

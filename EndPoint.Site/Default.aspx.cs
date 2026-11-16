@@ -32,29 +32,7 @@ namespace EndPoint.Site
             searchUsers = Global.Container.Resolve<ISearchUsers>();
         }
 
-        //protected void btnSubmitUser_Click(object sender, EventArgs e)
-        //{
-        //    UserRegisterRequest user = new UserRegisterRequest
-        //    {
-        //        FirstName = txtbFirstName.Text,
-        //        LastName = txtbLastName.Text,
-        //        UserName = txtbUserName.Text,
-        //        Password = txtbPassword.Text
-        //    };
-
-
-        //        var message = userRegisterService.RegisterUser(user);
-
-        //        lblMessege.Text = message;
-
-        //}
-
-        //protected void btnDelete_Click(object sender, EventArgs e)
-        //{
-        //    userDataAccess.DeleteUser(int.Parse(txtbDeleteUserId.Text));
-
-        //    lblDeleteMessage.Text = "User deleted successfully!";
-        //}
+        
 
         protected void dgvShowUsersRowCommand(object sender, GridViewCommandEventArgs e)
         {
