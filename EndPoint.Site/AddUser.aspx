@@ -78,6 +78,7 @@
                     <asp:CompareValidator ID="cvConfirmPassword" runat="server" ErrorMessage="not matched" ControlToValidate="txtbConfirmPassword" ControlToCompare="txtbPassword" Operator="Equal" Type="String" ForeColor="Red" Display="Dynamic" EnableClientScript="false"></asp:CompareValidator>
 
                     <div style="text-align: center;">
+                        <asp:Button ID="Back" runat="server" Text="Back" class="btn-text theme-danger" OnClick="Back_Click" ValidationGroup="GuideGroup"/>
                         <asp:Button ID="btnAddUser" runat="server" Text="Add" ValidationGroup="RegisterGroup" class="btn-text theme-primary" OnClick="btnSubmitUser_Click" />
                     </div>
 
