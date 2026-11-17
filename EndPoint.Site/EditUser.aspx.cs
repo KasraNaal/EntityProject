@@ -70,6 +70,13 @@ namespace EndPoint.Site
             };
 
             updateUser.UpdateUser(updateRequest);
+
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }
