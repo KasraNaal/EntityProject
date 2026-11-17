@@ -10,9 +10,9 @@
 </head>
 <body>
     <form id="GetUser" runat="server">
-        <div style="width: 450px; margin: 40px auto; text-align: left;">
+        <div style="width: fit-content; margin: 40px auto; text-align: left;">
 
-            <section class="card" style="max-width: 400px">
+            <section class="card" style="min-width: 400px">
                 <div class="card-body">
 
                     <div style="text-align: center">
