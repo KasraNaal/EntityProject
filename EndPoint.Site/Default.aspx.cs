@@ -58,5 +58,10 @@ namespace EndPoint.Site
             dgvShowUsers.DataSource = searchResults;
             dgvShowUsers.DataBind();
         }
+
+        protected void AddUser_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddUser.aspx");
+        }
     }
 }
