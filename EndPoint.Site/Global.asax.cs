@@ -28,6 +28,7 @@ namespace EndPoint.Site
             builder.RegisterType<SearchUsers>().As<ISearchUsers>().InstancePerLifetimeScope();
             builder.RegisterType<GetUserById>().As<IGetUserById>().InstancePerLifetimeScope();
             builder.RegisterType<UpdateUser>().As<IUpdateUser>().InstancePerLifetimeScope();
+            builder.RegisterType<SearchPerson>().As<ISearchPerson>().InstancePerLifetimeScope();
 
             Container = builder.Build();
         }

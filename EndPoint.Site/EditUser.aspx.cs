@@ -2,6 +2,7 @@
 using EntittyProject.Application.Interface;
 using EntittyProject.Application.UserManagment;
 using EntityProject.Application.Interface;
+using EntityProject.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static EntittyProject.Application.Interface.IUserDataAccess;
 using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EndPoint.Site
@@ -19,6 +21,7 @@ namespace EndPoint.Site
         public IDb db { get; set; }
         public IGetUserById getUserById { get; set; }
         public IUpdateUser updateUser { get; set; }
+        public ISearchPerson searchPerson { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +29,7 @@ namespace EndPoint.Site
             db = Global.Container.Resolve<IDb>();
             getUserById = Global.Container.Resolve<IGetUserById>();
             updateUser = Global.Container.Resolve<IUpdateUser>();
+            searchPerson = Global.Container.Resolve<ISearchPerson>();
 
             if (!IsPostBack)
             {
@@ -50,8 +54,8 @@ namespace EndPoint.Site
                     {
                         txtbFirstName.Text = user.Person.FirstName;
                         txtbLastName.Text = user.Person.LastName;
-                        txtbUserName.Text = user.UserName;
-                        txtbPassword.Attributes["value"] = user.Password;
+                        txtbUserName.Text = user.User.UserName;
+                        txtbPassword.Attributes["value"] = user.User.Password;
                     }
                 }
             }

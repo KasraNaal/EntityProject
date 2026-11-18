@@ -27,9 +27,9 @@ namespace EndPoint.Site
         public ISearchUsers searchUsers { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            searchUsers = Global.Container.Resolve<ISearchUsers>();
             userRegisterService = Global.Container.Resolve<IUserRegisterService>();
             userDataAccess = Global.Container.Resolve<IUserDataAccess>();
-            searchUsers = Global.Container.Resolve<ISearchUsers>();
         }
 
         
