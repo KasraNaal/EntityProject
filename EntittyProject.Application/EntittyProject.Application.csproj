@@ -54,6 +54,7 @@
     <Compile Include="UserManagment\GetUserById.cs" />
     <Compile Include="UserManagment\IDeleteUser.cs" />
     <Compile Include="UserManagment\IGetUserById.cs" />
+    <Compile Include="UserManagment\ISearchPerson.cs" />
     <Compile Include="UserManagment\ISearchUsers.cs" />
     <Compile Include="UserManagment\IUpdateUser.cs" />
     <Compile Include="UserManagment\IUserExist.cs" />

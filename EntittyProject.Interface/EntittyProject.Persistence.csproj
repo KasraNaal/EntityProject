@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DataBaseContext.cs" />
+    <Compile Include="DataAccess\SearchPerson.cs" />
     <Compile Include="DataAccess\SearchUsers.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
     <Compile Include="DataBase-Frist\EntityFrameworkDataModel.Context.cs">
