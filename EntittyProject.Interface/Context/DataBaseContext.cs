@@ -29,7 +29,13 @@ namespace EntityProject.Persistence.Contexts
 
         void IDb.Delete<TEntity>(TEntity entity)
         {
-            base.Set<TEntity>().Attach(entity);
+            var entry = base.Entry(entity);
+
+            if(entry.State == EntityState.Detached)
+            {
+                base.Set<TEntity>().Attach(entity);
+            }
+
             base.Set<TEntity>().Remove(entity);
         }
 
