@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static EntittyProject.Application.Interface.IUserDataAccess;
 using static EntittyProject.Application.UserManagment.IGetUserById;
 
 namespace EntittyProject.Application.UserManagment
@@ -18,7 +19,7 @@ namespace EntittyProject.Application.UserManagment
             _userDataAccess = userDataAccess;
         }
 
-        public User Execute(Request request)
+        public SearchDto Execute(Request request)
         {
             if (request is null)
             {
@@ -30,7 +31,7 @@ namespace EntittyProject.Application.UserManagment
                 return null;
             }
 
-            User user = _userDataAccess.GetUserById(request.Id);
+            SearchDto user = _userDataAccess.GetUserById(request.Id);
 
             return user;
 

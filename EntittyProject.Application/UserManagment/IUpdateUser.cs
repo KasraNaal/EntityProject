@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static EntittyProject.Application.Interface.IUserDataAccess;
 
 namespace EntittyProject.Application.UserManagment
 {
     public interface IUpdateUser
     {
-        User UpdateUser(UpdateRequest updateRequest);
+        SearchDto UpdateUser(UpdateRequest updateRequest);
 
         class UpdateRequest
         {

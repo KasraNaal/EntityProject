@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static EntittyProject.Application.Interface.IUserDataAccess;
 using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EntittyProject.Application.UserManagment
@@ -19,14 +20,14 @@ namespace EntittyProject.Application.UserManagment
             _userDataAccess = userDataAccess;
         }
 
-        User IUpdateUser.UpdateUser(UpdateRequest updateRequest)
+        SearchDto IUpdateUser.UpdateUser(UpdateRequest updateRequest)
         {
             var user = _userDataAccess.GetUserById(updateRequest.Id);
 
             user.Person.FirstName = updateRequest.FirstName;
             user.Person.LastName = updateRequest.LastName;
-            user.UserName = updateRequest.UserName;
-            user.Password = updateRequest.Password;
+            user.User.UserName = updateRequest.UserName;
+            user.User.Password = updateRequest.Password;
 
             _userDataAccess.UpdateUser(user);
 

@@ -10,11 +10,16 @@ namespace EntittyProject.Application.Interface
     public interface IUserDataAccess
     {
         void AddUser(User user);
-        void UpdateUser(User user);
+        void UpdateUser(SearchDto searchdto);
         void DeleteUser(int id);
         bool DoesUserExist(string userName);
         bool DoesUserExist(int Id);
         IQueryable<User> Search(string searchUser);
-        User GetUserById(int id);
+        SearchDto GetUserById(int id);
+        public class SearchDto
+        {
+            public User User { get; set; }
+            public Person Person { get; set; }
+        }
     }
 }
