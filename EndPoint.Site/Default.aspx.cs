@@ -51,11 +51,16 @@ namespace EndPoint.Site
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            var result = searchUsers.Respond(new ISearchUsers.Request { Keyword = txtbSearchUserName.Text })
+                .Select(u => new ShowUserDto
+                {
+                    Id = u.User.Id,
+                    FirstName = u.User.Person.FirstName,
+                    LastName = u.User.Person.LastName,
+                    UserName = u.User.UserName
+                }).ToList();
 
-            string searchUser = txtbSearchUserName.Text;
-            List<User> searchResults = userDataAccess.Search(searchUser).ToList();
-
-            dgvShowUsers.DataSource = searchResults;
+            dgvShowUsers.DataSource = result;
             dgvShowUsers.DataBind();
         }
 
