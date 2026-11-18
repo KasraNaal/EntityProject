@@ -11,25 +11,34 @@ namespace EntittyProject.Application.UserManagment
 {
     public class SearchPerson : ISearchPerson
     {
-        private readonly IUserDataAccess _userDataAccess;
         private readonly IDb _db;
 
-        public SearchPerson(IUserDataAccess userDataAccess, IDb db)
+        public SearchPerson(IDb db)
         {
-            _userDataAccess = userDataAccess;
             _db = db;
         }
 
-        public List<Person> Search(SearchPersonRequest request)
+        public IQueryable<Person> Search(SearchPersonRequest request = null)
         {
-            if(request.Id.HasValue)
-            {
-                List<Person> Persons = new List<Person>();
-                
+            var items = _db.Query<Person>();
 
+            if (request is null)
+            {
+                return items;
             }
 
-            return null;
+            if(request.Id.HasValue)
+            {
+                items = items.Where(i => i.Id == request.Id);
+            }
+
+            if(!string.IsNullOrEmpty(request.KeyWord))
+            {
+                items = items.Where(i => i.FirstName.Contains(request.KeyWord)||
+                                         i.LastName.Contains(request.KeyWord));
+            }
+
+            return items;
         }
     }
 }
