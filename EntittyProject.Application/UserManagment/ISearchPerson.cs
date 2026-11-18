@@ -9,7 +9,7 @@ namespace EntittyProject.Application.UserManagment
 {
     public interface ISearchPerson
     {
-        List<Person> Search(SearchPersonRequest request);
+        IQueryable<Person> Search(SearchPersonRequest request = null);
     }
 
     public class SearchPersonRequest
