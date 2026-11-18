@@ -1,15 +1,16 @@
-﻿using EntityProject.Application.Interface;
+﻿using EntittyProject.Application.Interface;
+using EntittyProject.Application.UserManagment;
+using EntityProject.Application.Interface;
+using EntityProject.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
-using EntityProject.Domain.Entities;
-using EntittyProject.Application.Interface;
-using EntittyProject.Application.UserManagment;
-using System.Data.Entity;
+using static EntittyProject.Application.Interface.IUserDataAccess;
 
 
 namespace EntityProject.Persistence.DataAccess
@@ -30,10 +31,10 @@ namespace EntityProject.Persistence.DataAccess
             _db.Add(user);
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(SearchDto searchdto)        // change input type to searchdto        **
         {
-            _db.Update<User>(user);
-            _db.Update<Person>(user.Person);
+            _db.Update<User>(searchdto.User);
+            _db.Update<Person>(searchdto.Person);
 
             _db.SaveChanges();
         }
@@ -45,9 +46,16 @@ namespace EntityProject.Persistence.DataAccess
             if (user != null)
             {
                 var person = user.Person;
+                
+                if(user.User != null)
+                {
+                    _db.Delete(user.User);
+                }
 
-                _db.Delete(user);
-                _db.Delete(person);
+                if(user.Person != null)
+                {
+                    _db.Delete(person);
+                }
 
                 _db.SaveChanges();
             }
@@ -63,12 +71,14 @@ namespace EntityProject.Persistence.DataAccess
             return Search().Any(u => u.Id == Id);
         }
 
-        public IQueryable<User> Search(string searchUser = null)
+        public IQueryable<User> Search(string searchUser = null)        // remove
         {
             if (string.IsNullOrWhiteSpace(searchUser))
             {
                 return _db.Query<User>();
             }
+
+            searchUser = searchUser.ToUpper();
 
             return _db.Query<User>()
                 .Where(s => s.Person.FirstName.ToUpper().Contains(searchUser) ||
@@ -76,9 +86,25 @@ namespace EntityProject.Persistence.DataAccess
                             s.UserName.ToUpper().Contains(searchUser));
         }
 
-        public User GetUserById(int id)
+
+        public SearchDto GetUserById(int id)
         {
-            return Search().Include(u => u.Person).FirstOrDefault(u => u.Id == id);
+            var user = _searchUsers.Respond(new ISearchUsers.Request 
+            { 
+                Id = id,
+                PersonRequest = new SearchPersonRequest()
+            }).FirstOrDefault();
+
+            if (user is null)
+            {
+                return null;
+            }
+
+            return new SearchDto
+            {
+                User = user.User,
+                Person = user.Person
+            };
         }
     }
 }
