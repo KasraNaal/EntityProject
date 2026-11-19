@@ -25,11 +25,13 @@ namespace EndPoint.Site
         public IUserValidation userValidation { get; set; }
         public IUserDataAccess userDataAccess { get; set; }
         public ISearchUsers searchUsers { get; set; }
+        public IDeleteUser deleteUser { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             searchUsers = Global.Container.Resolve<ISearchUsers>();
             userRegisterService = Global.Container.Resolve<IUserRegisterService>();
             userDataAccess = Global.Container.Resolve<IUserDataAccess>();
+            deleteUser = Global.Container.Resolve<IDeleteUser>();
         }
 
         
@@ -40,7 +42,7 @@ namespace EndPoint.Site
 
             if (e.CommandName == "DeleteUser")
             {
-                userDataAccess.DeleteUser(userId);
+                deleteUser.DeleteUser(userId);
             }
 
             else if (e.CommandName == "EditUser")
