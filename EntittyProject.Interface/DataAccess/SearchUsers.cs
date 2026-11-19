@@ -11,19 +11,11 @@ using static EntittyProject.Application.UserManagment.ISearchUsers;
 
 namespace EntityProject.Persistence.DataAccess
 {
-    public class SearchUsers : ISearchUsers
+    public class SearchUsers(IDb db, ISearchPerson searchPerson) : ISearchUsers
     {
-        private readonly IDb _db;
-        private readonly ISearchPerson _searchPerson;
-
-        public SearchUsers(IDb db, ISearchPerson searchPerson)
-        {
-            _db = db;
-            _searchPerson = searchPerson;
-        }
         public IQueryable<SearchDto> Respond(Request request)
         {
-            var items = _db.Query<User>().Select(user => new SearchDto
+            var items = db.Query<User>().Select(user => new SearchDto
             {
                 User = user,
                 Person = null
@@ -40,7 +32,7 @@ namespace EntityProject.Persistence.DataAccess
 
             if (request.PersonRequest != null)
             {
-                IQueryable<Person> people = _searchPerson.Search(request.PersonRequest);
+                IQueryable<Person> people = searchPerson.Search(request.PersonRequest);
 
                 items =
                     from user in items

@@ -9,22 +9,11 @@ using EntityProject.Domain.Entities;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class UserRegisterService: IUserRegisterService
+    public class UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db) : IUserRegisterService
     {
-        private readonly IUserValidation _userValidation;
-        private readonly IUserDataAccess _userDataAccess;
-        private readonly IDb _db;
-
-        public UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db)
-        {
-            _userValidation = userValidation;
-            _userDataAccess = userDataAccess;
-            _db = db;
-        }
-
         public string RegisterUser(UserRegisterRequest user)
         {
-            var validationResult = _userValidation.PasswordValidation(user.Password);
+            var validationResult = userValidation.PasswordValidation(user.Password);
             if (validationResult != "Password confirmed")
             {
                 return validationResult;
@@ -43,13 +32,13 @@ namespace EntittyProject.Application.UserManagment
                 Person = newPerson
             };
 
-            if (_userDataAccess.DoesUserExist(user.UserName))
+            if (userDataAccess.DoesUserExist(user.UserName))
             {
                 return "User already exists";
             }
 
-            _userDataAccess.AddUser(newUser);
-            _db.SaveChanges();
+            userDataAccess.AddUser(newUser);
+            db.SaveChanges();
 
             return "User registered successfully";
         }

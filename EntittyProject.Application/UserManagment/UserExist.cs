@@ -8,18 +8,11 @@ using System.Threading.Tasks;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class UserExist : IUserExist
+    public class UserExist(IUserDataAccess userDataAccess) : IUserExist
     {
-        private readonly IUserDataAccess _userDataAccess;
-
-        public UserExist(IUserDataAccess userDataAccess)
-        {
-            _userDataAccess = userDataAccess;
-        }
-
         public bool IUserExist(string UserName)
         {
-            return _userDataAccess.DoesUserExist(UserName);
+            return userDataAccess.DoesUserExist(UserName);
         }
     }
 }

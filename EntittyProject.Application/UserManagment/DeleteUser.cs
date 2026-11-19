@@ -9,27 +9,16 @@ using System.Threading.Tasks;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class DeleteUser : IDeleteUser
+    public class DeleteUser(IUserDataAccess userDataAccess, IDb db) : IDeleteUser
     {
-        private readonly IUserDataAccess _userDataAccess;
-        private readonly IDb _db;
-        private readonly IUserValidation _userValidation;
-
-        public DeleteUser(IUserDataAccess userDataAccess, IDb db, IUserValidation userValidation)
-        {
-            _userDataAccess = userDataAccess;
-            _db = db;
-            _userValidation = userValidation;
-        }
-
         void IDeleteUser.DeleteUser(int userId)
         {
-            if (_userDataAccess.DoesUserExist(userId))
+            if (userDataAccess.DoesUserExist(userId))
             {
                 throw new Exception("Where is User??");
             }
-            _userDataAccess.DeleteUser(userId);
-            _db.SaveChanges();
+            userDataAccess.DeleteUser(userId);
+            db.SaveChanges();
         }
     }
 }

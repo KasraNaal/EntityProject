@@ -9,18 +9,11 @@ using System.Threading.Tasks;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class SearchPerson : ISearchPerson
+    public class SearchPerson(IDb db) : ISearchPerson
     {
-        private readonly IDb _db;
-
-        public SearchPerson(IDb db)
-        {
-            _db = db;
-        }
-
         public IQueryable<Person> Search(SearchPersonRequest request = null)
         {
-            var items = _db.Query<Person>();
+            var items = db.Query<Person>();
 
             if (request is null)
             {

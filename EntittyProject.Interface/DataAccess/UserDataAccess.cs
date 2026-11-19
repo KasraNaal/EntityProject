@@ -13,26 +13,17 @@ using static EntittyProject.Application.Interface.IUserDataAccess;
 
 namespace EntityProject.Persistence.DataAccess
 {
-    public class UserDataAccess : IUserDataAccess
+    public class UserDataAccess(IDb db, ISearchUsers searchUsers) : IUserDataAccess
     {
-        private readonly IDb _db;
-        private readonly ISearchUsers _searchUsers;
-
-        public UserDataAccess(IDb db, ISearchUsers searchUsers)
-        {
-            _db = db;
-            _searchUsers = searchUsers;
-        }
-
         public void AddUser(User user)
         {
-            _db.Add(user);
+            db.Add(user);
         }
 
         public void UpdateUser(SearchDto searchdto)
         {
-            _db.Update<User>(searchdto.User);
-            _db.Update<Person>(searchdto.Person);
+            db.Update<User>(searchdto.User);
+            db.Update<Person>(searchdto.Person);
         }
 
         public void DeleteUser(int Id)
@@ -41,10 +32,10 @@ namespace EntityProject.Persistence.DataAccess
 
             var person = user.Person;
 
-            _db.Delete(user.User);
-            _db.Delete(person);
+            db.Delete(user.User);
+            db.Delete(person);
 
-            _db.SaveChanges();
+            db.SaveChanges();
         }
 
         public bool DoesUserExist(string userName)
@@ -61,12 +52,12 @@ namespace EntityProject.Persistence.DataAccess
         {
             if (string.IsNullOrWhiteSpace(searchUser))
             {
-                return _db.Query<User>();
+                return db.Query<User>();
             }
 
             searchUser = searchUser.ToUpper();
 
-            return _db.Query<User>()
+            return db.Query<User>()
                 .Where(s => s.Person.FirstName.ToUpper().Contains(searchUser) ||
                             s.Person.LastName.ToUpper().Contains(searchUser) ||
                             s.UserName.ToUpper().Contains(searchUser));
@@ -75,7 +66,7 @@ namespace EntityProject.Persistence.DataAccess
 
         public SearchDto GetUserById(int id)
         {
-            var user = _searchUsers.Respond(new ISearchUsers.Request 
+            var user = searchUsers.Respond(new ISearchUsers.Request 
             { 
                 Id = id,
                 PersonRequest = new SearchPersonRequest()

@@ -10,15 +10,8 @@ using static EntittyProject.Application.UserManagment.IGetUserById;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class GetUserById : IGetUserById
+    public class GetUserById(IUserDataAccess userDataAccess) : IGetUserById
     {
-        private readonly IUserDataAccess _userDataAccess;
-
-        public GetUserById(IUserDataAccess userDataAccess)
-        {
-            _userDataAccess = userDataAccess;
-        }
-
         public SearchDto Execute(Request request)
         {
             if (request is null)
@@ -31,7 +24,7 @@ namespace EntittyProject.Application.UserManagment
                 return null;
             }
 
-            SearchDto user = _userDataAccess.GetUserById(request.Id);
+            SearchDto user = userDataAccess.GetUserById(request.Id);
 
             return user;
 

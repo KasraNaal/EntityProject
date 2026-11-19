@@ -11,25 +11,21 @@ using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class UpdateUser : IUpdateUser
+    public class UpdateUser(IUserDataAccess userDataAccess, IDb db) : IUpdateUser
     {
-        private readonly IUserDataAccess _userDataAccess;
-
-        public UpdateUser(IUserDataAccess userDataAccess, IDb db)
-        {
-            _userDataAccess = userDataAccess;
-        }
 
         SearchDto IUpdateUser.UpdateUser(UpdateRequest updateRequest)
         {
-            var user = _userDataAccess.GetUserById(updateRequest.Id);
+            var user = userDataAccess.GetUserById(updateRequest.Id);
 
             user.Person.FirstName = updateRequest.FirstName;
             user.Person.LastName = updateRequest.LastName;
             user.User.UserName = updateRequest.UserName;
             user.User.Password = updateRequest.Password;
 
-            _userDataAccess.UpdateUser(user);
+            userDataAccess.UpdateUser(user);
+
+            db.SaveChanges();
 
             return user;
         }
