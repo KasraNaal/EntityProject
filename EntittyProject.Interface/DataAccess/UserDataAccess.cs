@@ -4,9 +4,7 @@ using EntityProject.Application.Interface;
 using EntityProject.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,28 +29,23 @@ namespace EntityProject.Persistence.DataAccess
             _db.Add(user);
         }
 
-        public void UpdateUser(SearchDto searchdto)        // change input type to searchdto        **
+        public void UpdateUser(SearchDto searchdto)
         {
             _db.Update<User>(searchdto.User);
             _db.Update<Person>(searchdto.Person);
-
-            _db.SaveChanges();
         }
 
         public void DeleteUser(int Id)
         {
             var user = GetUserById(Id);
 
-                var person = user.Person;
-                
-                if(user.User != null)
-                {
-                    _db.Delete(user.User);
-                    _db.Delete(person);
-                }
+            var person = user.Person;
 
-                _db.SaveChanges();
-            }
+            _db.Delete(user.User);
+            _db.Delete(person);
+
+            _db.SaveChanges();
+        }
 
         public bool DoesUserExist(string userName)
         {
