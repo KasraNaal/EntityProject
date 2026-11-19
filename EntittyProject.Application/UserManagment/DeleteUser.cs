@@ -22,17 +22,14 @@ namespace EntittyProject.Application.UserManagment
             _userValidation = userValidation;
         }
 
-        string IDeleteUser.DeleteUser(int userId)
+        void IDeleteUser.DeleteUser(int userId)
         {
             if (_userDataAccess.DoesUserExist(userId))
             {
-                _userDataAccess.DeleteUser(userId);
-                _db.SaveChanges();
-
-                return "User deleted successfully!";
+                throw new Exception("Where is User??");
             }
-
-            return "User does not exist!";
+            _userDataAccess.DeleteUser(userId);
+            _db.SaveChanges();
         }
     }
 }

@@ -43,23 +43,16 @@ namespace EntityProject.Persistence.DataAccess
         {
             var user = GetUserById(Id);
 
-            if (user != null)
-            {
                 var person = user.Person;
                 
                 if(user.User != null)
                 {
                     _db.Delete(user.User);
-                }
-
-                if(user.Person != null)
-                {
                     _db.Delete(person);
                 }
 
                 _db.SaveChanges();
             }
-        }
 
         public bool DoesUserExist(string userName)
         {

@@ -8,6 +8,6 @@ namespace EntittyProject.Application.UserManagment
 {
     public interface IDeleteUser
     {
-        string DeleteUser(int userId);
+        void DeleteUser(int userId);
     }
 }
