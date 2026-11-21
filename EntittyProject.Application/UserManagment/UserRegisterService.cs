@@ -1,11 +1,5 @@
 ﻿using EntittyProject.Application.Interface;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
-using System.Threading.Tasks;
-using EntityProject.Application.Interface;
-using EntityProject.Domain.Entities;
+using EntittyProject.Domain.Entities;
 
 namespace EntittyProject.Application.UserManagment
 {

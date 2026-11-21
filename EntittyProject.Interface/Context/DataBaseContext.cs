@@ -1,16 +1,9 @@
-﻿using EntittyProject.Domain.Interfaces;
-using EntityProject.Application.Interface;
-using EntityProject.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
-using EntittyProject.Application;
+using EntittyProject.Application.Interface;
+using EntittyProject.Domain.Entities;
 
-namespace EntityProject.Persistence.Contexts
+namespace EntittyProject.Persistence.Context
 {
     public class DataBaseContext : DbContext, IDb
     {

@@ -1,6 +1,4 @@
 ﻿using Autofac;
-using EntittyProject.Application.Interface;
-using EntittyProject.Application.UseCase;
 using EntittyProject.Application.UserManagment;
 using System;
 using System.Collections.Generic;
@@ -8,9 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-using EntityProject.Persistence.DataAccess;
-using EntityProject.Persistence.Contexts;
-using EntityProject.Application.Interface;
+using EntittyProject.Application.Interface;
+using EntittyProject.Persistence.Context;
+using EntittyProject.Persistence.DataAccess;
 
 namespace EndPoint.Site
 {

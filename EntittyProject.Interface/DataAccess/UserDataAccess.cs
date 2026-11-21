@@ -1,17 +1,10 @@
-﻿using EntittyProject.Application.Interface;
+﻿using System.Linq;
+using EntittyProject.Application.Interface;
 using EntittyProject.Application.UserManagment;
-using EntityProject.Application.Interface;
-using EntityProject.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static EntittyProject.Application.Interface.IUserDataAccess;
+using EntittyProject.Domain.Entities;
 
 
-namespace EntityProject.Persistence.DataAccess
+namespace EntittyProject.Persistence.DataAccess
 {
     public class UserDataAccess(IDb db, ISearchUsers searchUsers) : IUserDataAccess
     {

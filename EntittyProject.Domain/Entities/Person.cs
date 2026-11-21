@@ -1,6 +1,6 @@
 ﻿using EntittyProject.Domain.Interfaces;
 
-namespace EntityProject.Domain.Entities
+namespace EntittyProject.Domain.Entities
 {
     public class Person : IEntity
     {

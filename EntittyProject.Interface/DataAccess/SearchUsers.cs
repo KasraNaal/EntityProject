@@ -1,15 +1,11 @@
-﻿using EntittyProject.Application.Interface;
+﻿using System.Linq;
+using EntittyProject.Application.Interface;
 using EntittyProject.Application.UserManagment;
-using EntityProject.Application.Interface;
-using EntityProject.Domain.Entities;
-using System;
-using System.Linq;
-using System.Security.Cryptography;
-using static EntittyProject.Application.Interface.IUserDataAccess;
+using EntittyProject.Domain.Entities;
 using static EntittyProject.Application.UserManagment.ISearchUsers;
 
 
-namespace EntityProject.Persistence.DataAccess
+namespace EntittyProject.Persistence.DataAccess
 {
     public class SearchUsers(IDb db, ISearchPerson searchPerson) : ISearchUsers
     {

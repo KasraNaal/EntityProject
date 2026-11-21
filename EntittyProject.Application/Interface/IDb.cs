@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
-using EntityProject.Domain.Entities;
 using EntittyProject.Domain.Interfaces;
 
-
-
-namespace EntityProject.Application.Interface
+namespace EntittyProject.Application.Interface
 {
     public interface IDb : IDisposable
     {

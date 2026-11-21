@@ -1,13 +1,9 @@
-﻿using EntittyProject.Application.Interface;
-using EntityProject.Application.Interface;
-using EntityProject.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using EntittyProject.Application.Interface;
+using EntittyProject.Application.UserManagment;
+using EntittyProject.Domain.Entities;
 
-namespace EntittyProject.Application.UserManagment
+namespace EntittyProject.Persistence.DataAccess
 {
     public class SearchPerson(IDb db) : ISearchPerson
     {

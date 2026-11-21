@@ -7,13 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Autofac;
-using EntittyProject.Application.Interface;
-using EntittyProject.Application.UseCase;
 using EntittyProject.Application.UserManagment;
-using EntityProject.Application.Interface;
-using EntityProject.Persistence.Contexts;
-using EntityProject.Persistence.DataAccess;
-using EntityProject.Domain.Entities;
 using System.Net;
 
 
