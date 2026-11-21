@@ -1,8 +1,5 @@
 ﻿using Autofac;
-using EntittyProject.Application.Interface;
 using EntittyProject.Application.UserManagment;
-using EntityProject.Application.Interface;
-using EntityProject.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static EntittyProject.Application.Interface.IUserDataAccess;
+using EntittyProject.Application.Interface;
+using static EntittyProject.Application.UserManagment.IUserDataAccess;
 using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EndPoint.Site

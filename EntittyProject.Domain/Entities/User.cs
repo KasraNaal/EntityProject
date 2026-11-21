@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using EntittyProject.Domain.Interfaces;
+﻿using EntittyProject.Domain.Interfaces;
 
-namespace EntityProject.Domain.Entities
+namespace EntittyProject.Domain.Entities
 {
     public class User : IEntity
     {

@@ -1,6 +1,6 @@
-﻿using EntittyProject.Application.UseCase;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using EntittyProject.Application.UserManagment;
 
 namespace EntityProject.Application.Tests
 {

@@ -1,18 +1,20 @@
-﻿namespace EntittyProject.Persistence.Migrations
+﻿using EntittyProject.Persistence.Context;
+
+namespace EntittyProject.Persistence.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EntityProject.Persistence.Contexts.DataBaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DataBaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(EntityProject.Persistence.Contexts.DataBaseContext context)
+        protected override void Seed(DataBaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 
