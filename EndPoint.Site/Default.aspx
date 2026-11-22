@@ -55,7 +55,7 @@
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnDelete" runat="server"
                                                 CommandName="DeleteUser"
-                                                CommandArgument='<%# Eval("Id") %>'
+                                                CommandArgument='<%# Eval("Id") + "," + Eval("PersonId") %>'
                                                 CausesValidation="False"
                                                 OnClientClick="return confirm('Are you sure remove this user?!');"
                                                 Style="color: #dc3545; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">

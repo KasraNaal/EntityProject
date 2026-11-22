@@ -23,21 +23,28 @@ namespace EndPoint.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
 
         
 
         protected void dgvShowUsersRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int userId = Convert.ToInt32(e.CommandArgument);
-
+            
             if (e.CommandName == "DeleteUser")
             {
-                deleteUser.DeleteUser(userId);
+                string[] ids = e.CommandArgument.ToString().Split(',');
+
+                int userId = Convert.ToInt32(ids[0]);
+                int personId = Convert.ToInt32(ids[1]);
+
+                deleteUser.DeleteUser(userId, personId);
             }
 
             else if (e.CommandName == "EditUser")
             {
+                int userId = Convert.ToInt32(e.CommandArgument);
+
                 Response.Redirect($"EditUser.aspx?id={userId}");
             }
         }
@@ -48,6 +55,7 @@ namespace EndPoint.Site
                 .Select(u => new ShowUserDto
                 {
                     Id = u.Id,
+                    PersonId = u.PersonId,
                     FirstName = u.Person.FirstName,
                     LastName = u.Person.LastName,
                     UserName = u.UserName
