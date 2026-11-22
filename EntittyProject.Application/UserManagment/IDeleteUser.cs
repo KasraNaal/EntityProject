@@ -2,7 +2,7 @@
 {
     public interface IDeleteUser
     {
-        void DeleteUser(int userId);
+        void DeleteUser(int userId, int personId);
 
         class DeleteRequest
         {

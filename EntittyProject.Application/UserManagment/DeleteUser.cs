@@ -1,24 +1,15 @@
 ﻿using EntittyProject.Application.Interface;
+using EntittyProject.Application.PersonManagment;
+using EntittyProject.Domain.Entities;
 using System;
+using static EntittyProject.Application.UserManagment.IGetUserById;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class DeleteUser(IUserDataAccess userDataAccess, IDb db, IGetUserById getUserById) : IDeleteUser
+    public class DeleteUser(IUserDataAccess userDataAccess, IDb db, IGetUserById getUserById, IPersonDataAccess personDataAccess) : IDeleteUser
     {
-        void IDeleteUser.DeleteUser(int userId)
+        void IDeleteUser.DeleteUser(int userId, int personId)
         {
-            //if (userDataAccess.DoesUserExist(userId))
-            //{
-            //    throw new Exception("Where is User??");
-            //}
-            //userDataAccess.DeleteUser(userId);
-            //db.SaveChanges();
-
-            if (userId < 0)
-            {
-                throw new Exception("Unvalid user id");
-            }
-
             if (getUserById.Execute(new IGetUserById.Request
             {
                 Id = userId
@@ -28,6 +19,7 @@ namespace EntittyProject.Application.UserManagment
             }
 
             userDataAccess.DeleteUser(userId);
+            personDataAccess.Delete(personId);
             db.SaveChanges();
         }
     }
