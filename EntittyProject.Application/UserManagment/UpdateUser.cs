@@ -14,7 +14,17 @@ namespace EntittyProject.Application.UserManagment
                 Id = updateRequest.Id
             });
 
+            if(user?.User == null)
+            {
+                throw new System.Exception("User not found!");
+            }
+
             var person = personDataAccess.GetById(user.User.PersonId);
+
+            if(person == null)
+            {
+                throw new System.Exception("Person not foun!");
+            }
 
             person.FirstName = updateRequest.FirstName;
             person.LastName = updateRequest.LastName;
