@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using EntittyProject.Domain.Entities;
+﻿using EntittyProject.Domain.Entities;
+using System.Linq;
 
 namespace EntittyProject.Application.UserManagment
 {

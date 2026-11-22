@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using EntittyProject.Domain.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EntittyProject.Application.UserManagment
 {
@@ -11,7 +13,6 @@ namespace EntittyProject.Application.UserManagment
             public int? Id { get; set; }
             public string Keyword { get; set; }
             public SearchPersonRequest PersonRequest { get; set; }
-
         }
     }
 }

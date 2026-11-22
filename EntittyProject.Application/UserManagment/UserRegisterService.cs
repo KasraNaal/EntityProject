@@ -1,9 +1,11 @@
 ﻿using EntittyProject.Application.Interface;
 using EntittyProject.Domain.Entities;
+using System;
+using System.Linq;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db) : IUserRegisterService
+    public class UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db, IUserExist userExist) : IUserRegisterService
     {
         public string RegisterUser(UserRegisterRequest user)
         {
@@ -26,7 +28,7 @@ namespace EntittyProject.Application.UserManagment
                 Person = newPerson
             };
 
-            if (userDataAccess.DoesUserExist(user.UserName))
+            if (userExist.IsUserExist(user.UserName))
             {
                 return "User already exists";
             }
@@ -36,5 +38,13 @@ namespace EntittyProject.Application.UserManagment
 
             return "User registered successfully";
         }
+
+        //private bool IsUserExist(string userName)
+        //{
+        //    return searchUsers.Respond(new ISearchUsers.Request
+        //    {
+        //        Keyword = userName
+        //    }).Any();
+        //}
     }
 }

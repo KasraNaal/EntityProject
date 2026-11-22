@@ -1,6 +1,6 @@
-﻿using System;
+﻿using EntittyProject.Domain.Interfaces;
+using System;
 using System.Linq;
-using EntittyProject.Domain.Interfaces;
 
 namespace EntittyProject.Application.Interface
 {

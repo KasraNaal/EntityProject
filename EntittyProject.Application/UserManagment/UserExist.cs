@@ -1,3 +1,6 @@
+﻿using System.Data.Entity;
+using System.Linq;
+
 ﻿namespace EntittyProject.Application.UserManagment
 {
     public class UserExist(IUserDataAccess userDataAccess) : IUserExist
