@@ -1,9 +1,10 @@
 ﻿using EntittyProject.Application.Interface;
+using EntittyProject.Application.PersonManagment;
 using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IGetUserById getUserById) : IUpdateUser
+    public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IGetUserById getUserById, IPersonDataAccess personDataAccess) : IUpdateUser
     {
 
         void IUpdateUser.UpdateUser(UpdateRequest updateRequest)
@@ -13,12 +14,16 @@ namespace EntittyProject.Application.UserManagment
                 Id = updateRequest.Id
             });
 
-            user.User.Person.FirstName = updateRequest.FirstName;
-            user.User.Person.LastName = updateRequest.LastName;
+            var person = personDataAccess.GetById(user.User.PersonId);
+
+            person.FirstName = updateRequest.FirstName;
+            person.LastName = updateRequest.LastName;
             user.User.UserName = updateRequest.UserName;
             user.User.Password = updateRequest.Password;
+            user.User.Person = person;
 
             userDataAccess.UpdateUser(user.User);
+            personDataAccess.Update(person);
 
             db.SaveChanges();
 
