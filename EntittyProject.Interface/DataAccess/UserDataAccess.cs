@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using EntittyProject.Application.Interface;
+using EntittyProject.Application.PersonManagment;
 using EntittyProject.Application.UserManagment;
 using EntittyProject.Domain.Entities;
 
@@ -19,19 +20,14 @@ namespace EntittyProject.Persistence.DataAccess
             db.Update<Person>(user.Person);
         }
 
-        public void DeleteUser(int Id)
+        public void DeleteUser(int id)
         {
             var response = getUserById.Execute(new IGetUserById.Request
             {
-                Id = Id
+                Id = id
             });
 
-            var person = response.User.Person;
-
             db.Delete(response.User);
-            db.Delete(person);
-
-            db.SaveChanges();
         }
     }
 }
