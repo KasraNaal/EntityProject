@@ -9,32 +9,27 @@ namespace EntittyProject.Persistence.DataAccess
 {
     public class SearchUsers(IDb db, ISearchPerson searchPerson) : ISearchUsers
     {
-        public IQueryable<SearchDto> Respond(Request request)
+        public IQueryable<User> Respond(Request request)
         {
-            var items = db.Query<User>().Select(user => new SearchDto
-            {
-                User = user,
-                Person = null
-            });
+            var items = db.Query<User>();
 
             if (request == null)
                 return items;
 
             if (request.Id.HasValue)
-                items = items.Where(i => i.User.Id == request.Id);
+                items = items.Where(i => i.Id == request.Id);
 
             if (!string.IsNullOrEmpty(request.Keyword))
-                items = items.Where(i => i.User.UserName == request.Keyword);
+                items = items.Where(i => i.UserName == request.Keyword);
 
             if (request.PersonRequest != null)
             {
-                IQueryable<Person> people = searchPerson.Search(request.PersonRequest);
 
                 items = from user in items
                         join person in searchPerson.Search(request.PersonRequest)
                         on user.PersonId equals person.Id
                         select user;
-            } 
+            }
 
             return items;
         }
