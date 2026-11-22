@@ -1,13 +1,16 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 
-﻿namespace EntittyProject.Application.UserManagment
+namespace EntittyProject.Application.UserManagment
 {
-    public class UserExist(IUserDataAccess userDataAccess) : IUserExist
+    public class UserExist(ISearchUsers searchUser) : IUserExist
     {
-        public bool IUserExist(string userName)
+        public bool IsUserExist(string userName)
         {
-            return userDataAccess.DoesUserExist(userName);
+            return searchUser.Respond(new ISearchUsers.Request
+            {
+                Keyword = userName
+            }).Any();
         }
     }
 }
