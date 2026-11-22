@@ -10,6 +10,7 @@ using System.Web.SessionState;
 using EntittyProject.Application.Interface;
 using EntittyProject.Persistence.Context;
 using EntittyProject.Persistence.DataAccess;
+using EntittyProject.Application.PersonManagment;
 
 namespace EndPoint.Site
 {
@@ -38,6 +39,7 @@ namespace EndPoint.Site
             builder.RegisterType<SearchPerson>().As<ISearchPerson>().InstancePerLifetimeScope();
             builder.RegisterType<DeleteUser>().As<IDeleteUser>().InstancePerLifetimeScope();
             builder.RegisterType<UserExist>().As<IUserExist>().InstancePerLifetimeScope();
+            builder.RegisterType<PersonDataAccess>().As<IPersonDataAccess>().InstancePerLifetimeScope();
 
             var container = builder.Build();
 

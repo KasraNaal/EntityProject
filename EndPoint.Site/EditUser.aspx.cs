@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using EntittyProject.Application.Interface;
 using static EntittyProject.Application.UserManagment.IUserDataAccess;
 using static EntittyProject.Application.UserManagment.IUpdateUser;
+using EntittyProject.Application.PersonManagment;
 
 namespace EndPoint.Site
 {
@@ -20,6 +21,7 @@ namespace EndPoint.Site
         public IGetUserById getUserById { get; set; }
         public IUpdateUser updateUser { get; set; }
         public ISearchPerson searchPerson { get; set; }
+        public IPersonDataAccess personDataAccess { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {

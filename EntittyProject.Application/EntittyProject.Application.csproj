@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IDb.cs" />
+    <Compile Include="PersonManagment\IPersonDataAccess.cs" />
     <Compile Include="UserManagment\DeleteUser.cs" />
     <Compile Include="UserManagment\GetUserById.cs" />
     <Compile Include="UserManagment\IDeleteUser.cs" />
