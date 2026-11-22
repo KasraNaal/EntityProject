@@ -6,7 +6,7 @@ using EntittyProject.Domain.Entities;
 
 namespace EntittyProject.Persistence.DataAccess
 {
-    public class UserDataAccess(IDb db, ISearchUsers searchUsers) : IUserDataAccess
+    public class UserDataAccess(IDb db, IGetUserById getUserById) : IUserDataAccess
     {
         public void AddUser(User user)
         {
@@ -21,11 +21,14 @@ namespace EntittyProject.Persistence.DataAccess
 
         public void DeleteUser(int Id)
         {
-            var user = GetUserById(Id);
+            var response = getUserById.Execute(new IGetUserById.Request
+            {
+                Id = Id
+            });
 
-            var person = user.Person;
+            var person = response.User.Person;
 
-            db.Delete(user.User);
+            db.Delete(response.User);
             db.Delete(person);
 
             db.SaveChanges();
