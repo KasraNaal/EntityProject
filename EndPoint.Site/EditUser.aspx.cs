@@ -35,6 +35,7 @@ namespace EndPoint.Site
                     };
 
                     var user = getUserById.Execute(request);
+                    var person = personDataAccess.GetById(user.User.PersonId);
 
 
                     if (user == null)
@@ -44,8 +45,8 @@ namespace EndPoint.Site
 
                     else
                     {
-                        txtbFirstName.Text = user.User.Person.FirstName;
-                        txtbLastName.Text = user.User.Person.LastName;
+                        txtbFirstName.Text = person.FirstName;
+                        txtbLastName.Text = person.LastName;
                         txtbUserName.Text = user.User.UserName;
                         txtbPassword.Attributes["value"] = user.User.Password;
                     }
