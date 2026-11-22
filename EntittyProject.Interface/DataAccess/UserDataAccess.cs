@@ -13,10 +13,10 @@ namespace EntittyProject.Persistence.DataAccess
             db.Add(user);
         }
 
-        public void UpdateUser(SearchDto searchdto)
+        public void UpdateUser(User user)
         {
-            db.Update<User>(searchdto.User);
-            db.Update<Person>(searchdto.Person);
+            db.Update<User>(user);
+            db.Update<Person>(user.Person);
         }
 
         public void DeleteUser(int Id)
