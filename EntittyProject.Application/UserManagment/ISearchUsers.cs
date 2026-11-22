@@ -12,7 +12,7 @@ namespace EntittyProject.Application.UserManagment
         {
             public int? Id { get; set; }
             public string Keyword { get; set; }
-            public SearchPersonRequest PersonRequest { get; set; }
+            public ISearchPerson.SearchPersonRequest PersonRequest { get; set; }
         }
     }
 }

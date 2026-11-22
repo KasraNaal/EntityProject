@@ -7,7 +7,7 @@ namespace EntittyProject.Persistence.DataAccess
 {
     public class SearchPerson(IDb db) : ISearchPerson
     {
-        public IQueryable<Person> Search(SearchPersonRequest request = null)
+        public IQueryable<Person> Search(ISearchPerson.SearchPersonRequest request = null)
         {
             var items = db.Query<Person>();
 

@@ -86,6 +86,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EntityFrameworkDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Compile Include="DataAccess\PersonDataAccess.cs" />
     <None Include="DataBase-Frist\EntityFrameworkDataModel.edmx.diagram">
       <DependentUpon>EntityFrameworkDataModel.edmx</DependentUpon>
     </None>
