@@ -23,12 +23,6 @@ namespace EndPoint.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            userDataAccess = Global.Container.Resolve<IUserDataAccess>();
-            db = Global.Container.Resolve<IDb>();
-            getUserById = Global.Container.Resolve<IGetUserById>();
-            updateUser = Global.Container.Resolve<IUpdateUser>();
-            searchPerson = Global.Container.Resolve<ISearchPerson>();
-
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
@@ -50,8 +44,8 @@ namespace EndPoint.Site
 
                     else
                     {
-                        txtbFirstName.Text = user.Person.FirstName;
-                        txtbLastName.Text = user.Person.LastName;
+                        txtbFirstName.Text = user.User.Person.FirstName;
+                        txtbLastName.Text = user.User.Person.LastName;
                         txtbUserName.Text = user.User.UserName;
                         txtbPassword.Attributes["value"] = user.User.Password;
                     }

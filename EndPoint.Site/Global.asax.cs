@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Integration.Web;
 using EntittyProject.Application.UserManagment;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,17 @@ using EntittyProject.Persistence.DataAccess;
 
 namespace EndPoint.Site
 {
-    public class Global : System.Web.HttpApplication
+    public class Global : System.Web.HttpApplication, IContainerProviderAccessor
     {
-        public static IContainer Container { get; set; }
+        public static IContainerProvider containerProvider;
+        public IContainerProvider ContainerProvider 
+        { 
+            get
+            {
+                return containerProvider;
+            } 
+        }
+
         protected void Application_Start(object sender, EventArgs e)
         {
             var builder = new ContainerBuilder();
@@ -28,8 +37,11 @@ namespace EndPoint.Site
             builder.RegisterType<UpdateUser>().As<IUpdateUser>().InstancePerLifetimeScope();
             builder.RegisterType<SearchPerson>().As<ISearchPerson>().InstancePerLifetimeScope();
             builder.RegisterType<DeleteUser>().As<IDeleteUser>().InstancePerLifetimeScope();
+            builder.RegisterType<UserExist>().As<IUserExist>().InstancePerLifetimeScope();
 
-            Container = builder.Build();
+            var container = builder.Build();
+
+            containerProvider = new ContainerProvider(container);
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -59,7 +71,7 @@ namespace EndPoint.Site
 
         protected void Application_End(object sender, EventArgs e)
         {
-            Container?.Dispose();
+            //Container?.Dispose();
         }
     }
 }

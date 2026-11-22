@@ -20,12 +20,9 @@ namespace EndPoint.Site
         public IUserDataAccess userDataAccess { get; set; }
         public ISearchUsers searchUsers { get; set; }
         public IDeleteUser deleteUser { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            searchUsers = Global.Container.Resolve<ISearchUsers>();
-            userRegisterService = Global.Container.Resolve<IUserRegisterService>();
-            userDataAccess = Global.Container.Resolve<IUserDataAccess>();
-            deleteUser = Global.Container.Resolve<IDeleteUser>();
         }
 
         
@@ -50,10 +47,10 @@ namespace EndPoint.Site
             var result = searchUsers.Respond(new ISearchUsers.Request { Keyword = txtbSearchUserName.Text })
                 .Select(u => new ShowUserDto
                 {
-                    Id = u.User.Id,
-                    FirstName = u.User.Person.FirstName,
-                    LastName = u.User.Person.LastName,
-                    UserName = u.User.UserName
+                    Id = u.Id,
+                    FirstName = u.Person.FirstName,
+                    LastName = u.Person.LastName,
+                    UserName = u.UserName
                 }).ToList();
 
             dgvShowUsers.DataSource = result;

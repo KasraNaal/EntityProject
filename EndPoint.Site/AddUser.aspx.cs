@@ -15,7 +15,6 @@ namespace EndPoint.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            userRegisterService = Global.Container.Resolve<IUserRegisterService>();
         }
 
         protected void btnAddUser_Click(object sender, EventArgs e)
