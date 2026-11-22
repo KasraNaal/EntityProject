@@ -30,17 +30,10 @@ namespace EntittyProject.Persistence.DataAccess
             {
                 IQueryable<Person> people = searchPerson.Search(request.PersonRequest);
 
-                items =
-                    from user in items
-                    join person in people
-                    on user.User.PersonId equals person.Id into personGroup
-                    from person in personGroup.DefaultIfEmpty()
-                    where person != null
-                    select new SearchDto
-                    {
-                        User = user.User,
-                        Person = person
-                    };
+                items = from user in items
+                        join person in searchPerson.Search(request.PersonRequest)
+                        on user.PersonId equals person.Id
+                        select user;
             } 
 
             return items;
