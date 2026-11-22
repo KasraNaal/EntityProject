@@ -2,7 +2,7 @@
 {
     public interface IUpdateUser
     {
-        SearchDto UpdateUser(UpdateRequest updateRequest);
+        void UpdateUser(UpdateRequest updateRequest);
 
         class UpdateRequest
         {

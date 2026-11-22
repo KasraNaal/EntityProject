@@ -4,7 +4,7 @@ namespace EntittyProject.Application.UserManagment
 {
     public interface ISearchUsers
     {
-        IQueryable<SearchDto> Respond(Request request = null);
+        IQueryable<User> Respond(Request request = null);
 
         class Request
         {

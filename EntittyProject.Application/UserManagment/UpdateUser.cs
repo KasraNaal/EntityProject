@@ -3,23 +3,26 @@ using static EntittyProject.Application.UserManagment.IUpdateUser;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class UpdateUser(IUserDataAccess userDataAccess, IDb db) : IUpdateUser
+    public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IGetUserById getUserById) : IUpdateUser
     {
 
-        SearchDto IUpdateUser.UpdateUser(UpdateRequest updateRequest)
+        void IUpdateUser.UpdateUser(UpdateRequest updateRequest)
         {
-            var user = userDataAccess.GetUserById(updateRequest.Id);
+            var user = getUserById.Execute(new IGetUserById.Request
+            {
+                Id = updateRequest.Id
+            });
 
-            user.Person.FirstName = updateRequest.FirstName;
-            user.Person.LastName = updateRequest.LastName;
+            user.User.Person.FirstName = updateRequest.FirstName;
+            user.User.Person.LastName = updateRequest.LastName;
             user.User.UserName = updateRequest.UserName;
             user.User.Password = updateRequest.Password;
 
-            userDataAccess.UpdateUser(user);
+            userDataAccess.UpdateUser(user.User);
 
             db.SaveChanges();
 
-            return user;
+
         }
     }
 }
