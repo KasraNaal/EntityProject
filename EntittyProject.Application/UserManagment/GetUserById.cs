@@ -1,11 +1,11 @@
-﻿using static EntittyProject.Application.UserManagment.IUserDataAccess;
+﻿using System.Linq;
 using static EntittyProject.Application.UserManagment.IGetUserById;
 
 namespace EntittyProject.Application.UserManagment
 {
-    public class GetUserById(IUserDataAccess userDataAccess) : IGetUserById
+    public class GetUserById(ISearchUsers searchUsers) : IGetUserById
     {
-        public SearchDto Execute(Request request)
+        public Response Execute(Request request)
         {
             if (request is null)
             {
@@ -17,9 +17,14 @@ namespace EntittyProject.Application.UserManagment
                 return null;
             }
 
-            SearchDto user = userDataAccess.GetUserById(request.Id);
+            return searchUsers.Respond(new ISearchUsers.Request
+            {
+                Id = request.Id
+            }).Select(i => new Response
+            {
+                User = i
+            }).SingleOrDefault();
 
-            return user;
         }
     }
 }
