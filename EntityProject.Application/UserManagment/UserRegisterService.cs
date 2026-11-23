@@ -3,7 +3,7 @@ using EntityProject.Domain.Entities;
 
 namespace EntityProject.Application.UserManagment
 {
-    public class UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db, IUserExist userExist) : IUserRegisterService
+    public class UserRegisterService(IUserValidation userValidation, IUserDataAccess userDataAccess, IDb db, IIsUserExist userExist) : IUserRegisterService
     {
         public string RegisterUser(UserRegisterRequest user)
         {

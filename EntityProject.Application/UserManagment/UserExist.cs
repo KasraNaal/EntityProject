@@ -2,7 +2,7 @@
 
 namespace EntityProject.Application.UserManagment
 {
-    public class UserExist(ISearchUsers searchUser) : IUserExist
+    public class UserExist(ISearchUsers searchUser) : IIsUserExist
     {
         public bool IsUserExist(string userName)
         {

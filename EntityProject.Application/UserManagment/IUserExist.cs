@@ -1,6 +1,6 @@
 ﻿namespace EntityProject.Application.UserManagment
 {
-    public interface IUserExist
+    public interface IIsUserExist
     {
         bool IsUserExist(string userName);
     }
