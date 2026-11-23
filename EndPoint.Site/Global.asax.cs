@@ -31,7 +31,7 @@ namespace EndPoint.Site
 
             builder.RegisterType<DataBaseContext>().As<IDb>().InstancePerLifetimeScope();
             builder.RegisterType<UserRegisterService>().As<IUserRegisterService>().InstancePerLifetimeScope();
-            builder.RegisterType<UserValidation>().As<IUserValidation>().InstancePerLifetimeScope();
+            builder.RegisterType<Validation>().As<IUserValidation>().InstancePerLifetimeScope();
             builder.RegisterType<UserDataAccess>().As<IUserDataAccess>().InstancePerLifetimeScope();
             builder.RegisterType<SearchUsers>().As<ISearchUsers>().InstancePerLifetimeScope();
             builder.RegisterType<GetUserById>().As<IGetUserById>().InstancePerLifetimeScope();

@@ -2,7 +2,7 @@
 
 namespace EntityProject.Application.UserManagment
 {
-    public class UserValidation: IUserValidation
+    public class Validation: IUserValidation
     {
         public string PasswordValidation(string password)
         {
