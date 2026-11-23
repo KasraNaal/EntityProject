@@ -6,7 +6,7 @@ namespace EntityProject.Application.UserManagment
 {
     public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IPersonDataAccess personDataAccess) : IUpdateUser
     {
-        void IUpdateUser.UpdateUser(UpdateRequest updateRequest)
+        void IUpdateUser.Update(UpdateRequest updateRequest)
         {
             var user = userDataAccess.GetForUpdate(updateRequest.Id);
 

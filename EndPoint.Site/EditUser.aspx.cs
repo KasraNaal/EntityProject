@@ -52,7 +52,7 @@ namespace EndPoint.Site
                     Password = txtbPassword.Text
                 };
 
-                updateUser.UpdateUser(updateRequest);
+                updateUser.Update(updateRequest);
 
                 Response.Redirect("Default.aspx");
             }

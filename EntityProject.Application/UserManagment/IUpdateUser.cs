@@ -2,7 +2,7 @@
 {
     public interface IUpdateUser
     {
-        void UpdateUser(UpdateRequest updateRequest);
+        void Update(UpdateRequest updateRequest);
 
         class UpdateRequest
         {
