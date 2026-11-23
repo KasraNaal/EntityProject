@@ -3,12 +3,12 @@ using EntityProject.Application.PersonManagment;
 
 namespace EntityProject.Application.UserManagment
 {
-    public class DeleteUser(
+    public class Delete(
         IUserDataAccess userDataAccess,
         IDb db,
         IPersonDataAccess personDataAccess) : IDeleteUser
     {
-        void IDeleteUser.DeleteUser(int userId)
+        void IDeleteUser.Delete(int userId)
         {
             var user = userDataAccess.GetForUpdate(userId);
             userDataAccess.Delete(user);

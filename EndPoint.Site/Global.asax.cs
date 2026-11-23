@@ -37,7 +37,7 @@ namespace EndPoint.Site
             builder.RegisterType<GetUserById>().As<IGetUserById>().InstancePerLifetimeScope();
             builder.RegisterType<UpdateUser>().As<IUpdateUser>().InstancePerLifetimeScope();
             builder.RegisterType<SearchPerson>().As<ISearchPerson>().InstancePerLifetimeScope();
-            builder.RegisterType<DeleteUser>().As<IDeleteUser>().InstancePerLifetimeScope();
+            builder.RegisterType<Delete>().As<IDeleteUser>().InstancePerLifetimeScope();
             builder.RegisterType<UserExist>().As<IUserExist>().InstancePerLifetimeScope();
             builder.RegisterType<PersonDataAccess>().As<IPersonDataAccess>().InstancePerLifetimeScope();
 

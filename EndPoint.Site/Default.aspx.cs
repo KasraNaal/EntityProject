@@ -26,7 +26,7 @@ namespace EndPoint.Site
 
                 int userId = Convert.ToInt32(ids[0]);
 
-                deleteUser.DeleteUser(userId);
+                deleteUser.Delete(userId);
             }
 
             else if (e.CommandName == "EditUser")

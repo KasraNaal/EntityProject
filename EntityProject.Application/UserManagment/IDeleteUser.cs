@@ -2,6 +2,6 @@
 {
     public interface IDeleteUser
     {
-        void DeleteUser(int userId);
+        void Delete(int userId);
     }
 }
