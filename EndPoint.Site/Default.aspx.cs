@@ -59,6 +59,12 @@ namespace EndPoint.Site
             LoadUsers();
         }
 
+        protected void dgvShowUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvShowUsers.PageIndex = e.NewPageIndex;
+            LoadUsers();
+        }
+
         protected void AddUser_Click(object sender, EventArgs e)
         {
             Response.Redirect("AddUser.aspx");
@@ -91,13 +97,6 @@ namespace EndPoint.Site
 
             dgvShowUsers.DataSource = result;
             dgvShowUsers.DataBind();
-        }
-
-
-        protected void dgvShowUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            dgvShowUsers.PageIndex = e.NewPageIndex;
-            LoadUsers();
         }
     }
 }
