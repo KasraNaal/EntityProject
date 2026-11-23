@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Permissions;
 using System.Web.UI.WebControls;
 using EntityProject.Application.UserManagment;
 
@@ -13,6 +14,8 @@ namespace EndPoint.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+                LoadUsers();
         }
 
         protected void dgvShowUsersRowCommand(object sender, GridViewCommandEventArgs e)
@@ -37,9 +40,9 @@ namespace EndPoint.Site
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             var result = searchUsers.Respond(new ISearchUsers.Request
-                {
-                    Keyword = txtbSearchUserName.Text
-                })
+            {
+                Keyword = txtbSearchUserName.Text
+            })
                 .Select(u => new ShowUserDto
                 {
                     Id = u.Id,
@@ -51,11 +54,50 @@ namespace EndPoint.Site
 
             dgvShowUsers.DataSource = result;
             dgvShowUsers.DataBind();
+
+            dgvShowUsers.PageIndex = 0;
+            LoadUsers();
         }
 
         protected void AddUser_Click(object sender, EventArgs e)
         {
             Response.Redirect("AddUser.aspx");
+        }
+        
+        private void LoadUsers()
+        {
+            var query = searchUsers.Respond(new ISearchUsers.Request
+            {
+                Keyword = txtbSearchUserName.Text
+            });
+
+            int totalCount = query.Count();
+            dgvShowUsers.VirtualItemCount = totalCount;
+
+            if (dgvShowUsers.PageIndex > 0 && dgvShowUsers.PageIndex * dgvShowUsers.PageSize >= totalCount)
+                dgvShowUsers.PageIndex--;
+
+            var result = query
+                .OrderBy(u => u.Id)
+                .Skip(dgvShowUsers.PageIndex * dgvShowUsers.PageSize)
+                .Take(dgvShowUsers.PageSize)
+                .Select(u => new ShowUserDto
+                {
+                    Id = u.Id,
+                    FirstName = u.Person.FirstName,
+                    LastName = u.Person.LastName,
+                    UserName = u.UserName
+                }).ToList();
+
+            dgvShowUsers.DataSource = result;
+            dgvShowUsers.DataBind();
+        }
+
+
+        protected void dgvShowUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvShowUsers.PageIndex = e.NewPageIndex;
+            LoadUsers();
         }
     }
 }

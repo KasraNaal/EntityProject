@@ -29,7 +29,55 @@
                         <br />
 
                         <div style="display: flex; justify-content: center; margin-top: 20px;">
-                            <asp:GridView ID="dgvShowUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowCommand="dgvShowUsersRowCommand" CssClass="table table-dark table-bordered table-striped table-hover text-center">
+
+
+                            <style type="text/css">
+                                .custom-pager > td {
+                                    border: none !important;
+                                    background-color: transparent !important;
+                                    padding-top: 15px !important;
+                                }
+
+                                .custom-pager table {
+                                    margin: 0 auto;
+                                }
+
+                                    .custom-pager table td {
+                                        border: none !important;
+                                        padding: 0 3px !important;
+                                        background-color: transparent !important;
+                                    }
+
+                                .custom-pager a {
+                                    display: inline-block;
+                                    padding: 6px 12px;
+                                    background-color: #212529;
+                                    color: #ffffff;
+                                    border: 1px solid #495057;
+                                    border-radius: 5px;
+                                    text-decoration: none;
+                                }
+
+                                    .custom-pager a:hover {
+                                        background-color: #0d6efd;
+                                        border-color: #0d6efd;
+                                    }
+
+                                .custom-pager span {
+                                    display: inline-block;
+                                    padding: 6px 12px;
+                                    background-color: #0d6efd;
+                                    color: #ffffff;
+                                    border: 1px solid #0d6efd;
+                                    border-radius: 5px;
+                                    font-weight: bold;
+                                }
+                            </style>
+
+
+                            <asp:GridView ID="dgvShowUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowCommand="dgvShowUsersRowCommand" CssClass="table table-dark table-bordered table-striped table-hover text-center" AllowPaging="true" AllowCustomPaging="True" PageSize="10" OnPageIndexChanging="dgvShowUsers_PageIndexChanging">
+                                <PagerStyle CssClass="custom-pager" HorizontalAlign="Center" ForeColor="White" BackColor="#212529" />
+                                <PagerSettings Mode="NumericFirstLast" FirstPageText="First" LastPageText="Last" PageButtonCount="10" />
                                 <Columns>
                                     <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" />
                                     <asp:BoundField DataField="FirstName" HeaderText="First Name" />
