@@ -1,33 +1,30 @@
 ﻿using System.Linq;
-using EntittyProject.Application.Interface;
-using EntittyProject.Application.PersonManagment;
-using EntittyProject.Application.UserManagment;
-using EntittyProject.Domain.Entities;
+using EntityProject.Application.Interface;
+using EntityProject.Application.UserManagment;
+using EntityProject.Domain.Entities;
 
-
-namespace EntittyProject.Persistence.DataAccess
+namespace EntityProject.Persistence.DataAccess
 {
-    public class UserDataAccess(IDb db, IGetUserById getUserById) : IUserDataAccess
+    public class UserDataAccess(IDb db, ISearchUsers searchUsers) : IUserDataAccess
     {
-        public void AddUser(User user)
+        public void Add(User user)
         {
             db.Add(user);
         }
 
-        public void UpdateUser(User user)
+        public User GetForUpdate(int id)
         {
-            db.Update<User>(user);
-            db.Update<Person>(user.Person);
+            return searchUsers.RespondForUpdate(new ISearchUsers.Request { Id = id }).SingleOrDefault();
         }
 
-        public void DeleteUser(int id)
+        public void Delete(User user)
         {
-            var response = getUserById.Execute(new IGetUserById.Request
-            {
-                Id = id
-            });
+            db.Delete(user);
+        }
 
-            db.Delete(response.User);
+        public User GetById(int id)
+        {
+            return searchUsers.Respond(new ISearchUsers.Request { Id = id }).SingleOrDefault();
         }
     }
 }

@@ -1,37 +1,31 @@
-﻿using EntittyProject.Application.Interface;
-using EntittyProject.Application.PersonManagment;
-using EntittyProject.Application.UserManagment;
-using EntittyProject.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using EntityProject.Application.Interface;
+using EntityProject.Application.PersonManagment;
+using EntityProject.Application.UserManagment;
+using EntityProject.Domain.Entities;
 
-namespace EntittyProject.Persistence.DataAccess
+namespace EntityProject.Persistence.DataAccess
 {
     public class PersonDataAccess(ISearchPerson searchPerson, IDb db) : IPersonDataAccess
     {
-        public void Delete(int id)
+        public void Delete(Person person)
         {
-            Person person = GetById(id);
             db.Delete<Person>(person);
         }
 
         public Person GetById(int id)
         {
-            Person person = searchPerson.Search(new ISearchPerson.SearchPersonRequest
+            return searchPerson.Respond(new ISearchPerson.Request
             {
                 Id = id
             }).SingleOrDefault(p => p.Id == id);
-
-            return person;
         }
-
-        public void Update(Person person)
+        public Person GetForUpdate(int id)
         {
-            db.Update<Person>(person);
+            return searchPerson.RespondForUpdate(new ISearchPerson.Request
+            {
+                Id = id
+            }).SingleOrDefault(p => p.Id == id);
         }
     }
 }

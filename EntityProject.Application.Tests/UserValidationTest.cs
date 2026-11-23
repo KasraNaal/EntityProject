@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using EntittyProject.Application.UserManagment;
+using EntityProject.Application.UserManagment;
 
 namespace EntityProject.Application.Tests
 {

@@ -133,17 +133,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntittyProject.Application\EntittyProject.Application.csproj">
+    <ProjectReference Include="..\EntityProject.Application\EntityProject.Application.csproj">
       <Project>{93bb737f-ee76-4ada-a590-4122c33e2109}</Project>
-      <Name>EntittyProject.Application</Name>
+      <Name>EntityProject.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntittyProject.Domain\EntittyProject.Domain.csproj">
+    <ProjectReference Include="..\EntityProject.Domain\EntityProject.Domain.csproj">
       <Project>{72e20837-60b3-488a-8e16-bd0974f1fcbc}</Project>
-      <Name>EntittyProject.Domain</Name>
+      <Name>EntityProject.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntittyProject.Interface\EntittyProject.Persistence.csproj">
+    <ProjectReference Include="..\EntittyProject.Interface\EntityProject.Persistence.csproj">
       <Project>{0501d129-9d53-4e28-b0c8-800f674234a4}</Project>
-      <Name>EntittyProject.Persistence</Name>
+      <Name>EntityProject.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

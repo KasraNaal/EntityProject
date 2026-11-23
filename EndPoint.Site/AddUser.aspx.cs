@@ -1,11 +1,5 @@
-﻿using Autofac;
-using EntittyProject.Application.UserManagment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using System;
+using EntityProject.Application.UserManagment;
 
 namespace EndPoint.Site
 {
@@ -26,8 +20,7 @@ namespace EndPoint.Site
                 UserName = txtbUserName.Text,
                 Password = txtbPassword.Text
             };
-
-
+            
             var message = userRegisterService.RegisterUser(user);
 
             lblMessege.Text = message;
@@ -42,8 +35,7 @@ namespace EndPoint.Site
                 UserName = txtbUserName.Text,
                 Password = txtbPassword.Text
             };
-
-
+            
             var message = userRegisterService.RegisterUser(user);
 
             lblMessege.Text = message;

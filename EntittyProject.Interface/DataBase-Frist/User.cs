@@ -7,15 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using EntittyProject.Domain.Interfaces;
+using EntityProject.Domain.Interfaces;
 
-
-
-namespace EntittyProject.Persistence.DataBase_Frist
+namespace EntityProject.Persistence.DataBase_Frist
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class User: IEntity
     {
         public int Id { get; set; }

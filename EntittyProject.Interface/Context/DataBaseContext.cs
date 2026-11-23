@@ -1,9 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using EntittyProject.Application.Interface;
-using EntittyProject.Domain.Entities;
+using EntityProject.Application.Interface;
+using EntityProject.Domain.Entities;
 
-namespace EntittyProject.Persistence.Context
+namespace EntityProject.Persistence.Context
 {
     public class DataBaseContext : DbContext, IDb
     {
@@ -32,15 +32,6 @@ namespace EntittyProject.Persistence.Context
             base.Set<TEntity>().Remove(entity);
         }
 
-        void IDb.DeleteById<TEntity>(int id)
-        {
-            var entity = base.Set<TEntity>().Create();
-            entity.Id = id;
-
-            base.Set<TEntity>().Attach(entity);
-            base.Set<TEntity>().Remove(entity);
-        }
-
         IQueryable<TEntity> IDb.Query<TEntity>()
         {
             return base.Set<TEntity>().AsNoTracking();
@@ -49,11 +40,6 @@ namespace EntittyProject.Persistence.Context
         IQueryable<TEntity> IDb.Set<TEntity>()
         {
             return base.Set<TEntity>();
-        }
-
-        void IDb.Update<TEntity>(TEntity entity)
-        {
-            base.Entry(entity).State = EntityState.Modified;
         }
 
         int IDb.SaveChanges()
