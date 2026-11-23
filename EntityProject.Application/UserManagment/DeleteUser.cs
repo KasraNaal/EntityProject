@@ -8,12 +8,12 @@ namespace EntityProject.Application.UserManagment
         IDb db,
         IPersonDataAccess personDataAccess) : IDeleteUser
     {
-        void IDeleteUser.DeleteUser(int userId, int personId)
+        void IDeleteUser.DeleteUser(int userId)
         {
             var user = userDataAccess.GetForUpdate(userId);
             userDataAccess.Delete(user);
 
-            var person = personDataAccess.GetForUpdate(personId);
+            var person = personDataAccess.GetForUpdate(user.PersonId);
             personDataAccess.Delete(person);
 
             db.SaveChanges();

@@ -22,9 +22,8 @@ namespace EndPoint.Site
                 string[] ids = e.CommandArgument.ToString().Split(',');
 
                 int userId = Convert.ToInt32(ids[0]);
-                int personId = Convert.ToInt32(ids[1]);
 
-                deleteUser.DeleteUser(userId, personId);
+                deleteUser.DeleteUser(userId);
             }
 
             else if (e.CommandName == "EditUser")
