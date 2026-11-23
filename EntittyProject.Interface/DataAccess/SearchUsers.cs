@@ -29,7 +29,10 @@ public class SearchUsers(IDb db, ISearchPerson searchPerson) : ISearchUsers
             items = items.Where(i => i.Id == request.Id);
 
         if (!string.IsNullOrEmpty(request.Keyword))
-            items = items.Where(i => i.UserName == request.Keyword);
+            items = items.Where(i => i.UserName.Contains(request.Keyword)
+                                  || i.Person.FirstName.Contains(request.Keyword)
+                                  || i.Person.LastName.Contains(request.Keyword)
+                );
 
         if (request.PersonRequest != null)
             items = from user in items
