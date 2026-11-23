@@ -21,20 +21,16 @@ namespace EntityProject.Persistence.DataAccess
         private IQueryable<Person> Respond(ISearchPerson.Request request, IQueryable<Person> items)
         {
             if (request is null)
-            {
                 return items;
-            }
+            
 
             if (request.Id.HasValue)
-            {
                 items = items.Where(i => i.Id == request.Id);
-            }
+
 
             if (!string.IsNullOrEmpty(request.KeyWord))
-            {
                 items = items.Where(i => i.FirstName.Contains(request.KeyWord) ||
                                          i.LastName.Contains(request.KeyWord));
-            }
 
             return items;
         }
