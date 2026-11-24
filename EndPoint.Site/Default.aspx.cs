@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Permissions;
 using System.Web.UI.WebControls;
 using EntityProject.Application.UserManagment;
-
 
 namespace EndPoint.Site
 {
@@ -39,22 +37,6 @@ namespace EndPoint.Site
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            var result = searchUsers.Respond(new ISearchUsers.Request
-            {
-                Keyword = txtbSearchUserName.Text
-            })
-                .Select(u => new ShowUserDto
-                {
-                    Id = u.Id,
-                    PersonId = u.PersonId,
-                    FirstName = u.Person.FirstName,
-                    LastName = u.Person.LastName,
-                    UserName = u.UserName
-                }).ToList();
-
-            dgvShowUsers.DataSource = result;
-            dgvShowUsers.DataBind();
-
             dgvShowUsers.PageIndex = 0;
             LoadUsers();
         }
@@ -69,7 +51,7 @@ namespace EndPoint.Site
         {
             Response.Redirect("AddUser.aspx");
         }
-        
+
         private void LoadUsers()
         {
             var query = searchUsers.Respond(new ISearchUsers.Request
