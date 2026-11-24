@@ -21,7 +21,7 @@ public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IPersonDataAcces
 
         if(person == null)
         {
-            throw new System.Exception("Person not foun!");
+            throw new System.Exception("Person not found!");
         }
 
         person.FirstName = updateRequest.FirstName;
