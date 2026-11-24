@@ -1,7 +1,6 @@
-﻿namespace EntityProject.Application.UserManagment
+﻿namespace EntityProject.Application.UserManagment;
+
+public interface IUserValidation
 {
-    public interface IUserValidation
-    {
-        string PasswordValidation(string password);
-    }
+    string PasswordValidation(string password);
 }

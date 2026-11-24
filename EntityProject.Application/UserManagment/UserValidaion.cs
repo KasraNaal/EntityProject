@@ -1,16 +1,15 @@
 ﻿using System.Linq;
 
-namespace EntityProject.Application.UserManagment
+namespace EntityProject.Application.UserManagment;
+
+public class Validation: IUserValidation
 {
-    public class Validation: IUserValidation
+    public string PasswordValidation(string password)
     {
-        public string PasswordValidation(string password)
+        if (!(password.Count() >= 8) || !(password.Contains('@')))
         {
-            if (!(password.Count() >= 8) || !(password.Contains('@')))
-            {
-                return "Your password should be more than 8 characters and contains @";
-            }
-            return"Password confirmed";
+            return "Your password should be more than 8 characters and contains @";
         }
+        return"Password confirmed";
     }
 }

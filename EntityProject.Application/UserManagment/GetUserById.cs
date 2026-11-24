@@ -1,12 +1,11 @@
 ﻿using EntityProject.Domain.Entities;
 
-namespace EntityProject.Application.UserManagment
+namespace EntityProject.Application.UserManagment;
+
+public class GetUserById(IUserDataAccess userDataAccess) : IGetUserById
 {
-    public class GetUserById(IUserDataAccess userDataAccess) : IGetUserById
+    public User Execute(int id)
     {
-        public User Execute(int id)
-        {
-            return userDataAccess.GetById(id);
-        }
+        return userDataAccess.GetById(id);
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System.Linq;
 
-namespace EntityProject.Application.UserManagment
+namespace EntityProject.Application.UserManagment;
+
+public class UserExist(ISearchUsers searchUser) : IIsUserExist
 {
-    public class UserExist(ISearchUsers searchUser) : IIsUserExist
+    public bool IsUserExist(string userName)
     {
-        public bool IsUserExist(string userName)
+        return searchUser.Respond(new ISearchUsers.Request
         {
-            return searchUser.Respond(new ISearchUsers.Request
-            {
-                Keyword = userName
-            }).Any();
-        }
+            Keyword = userName
+        }).Any();
     }
 }

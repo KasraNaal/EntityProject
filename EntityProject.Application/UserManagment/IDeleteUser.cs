@@ -1,7 +1,6 @@
-﻿namespace EntityProject.Application.UserManagment
+﻿namespace EntityProject.Application.UserManagment;
+
+public interface IDeleteUser
 {
-    public interface IDeleteUser
-    {
-        void Delete(int userId);
-    }
+    void Delete(int userId);
 }

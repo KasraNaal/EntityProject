@@ -1,10 +1,9 @@
 ﻿using EntityProject.Domain.Entities;
 
-namespace EntityProject.Application.UserManagment
+namespace EntityProject.Application.UserManagment;
+
+public interface IGetUserById
 {
-    public interface IGetUserById
-    {
-        User Execute(int id);
-        
-    }
+    User Execute(int id);
+    
 }

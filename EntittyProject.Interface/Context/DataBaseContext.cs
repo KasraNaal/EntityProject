@@ -3,48 +3,47 @@ using System.Linq;
 using EntityProject.Application.Interface;
 using EntityProject.Domain.Entities;
 
-namespace EntityProject.Persistence.Context
+namespace EntityProject.Persistence.Context;
+
+public class DataBaseContext : DbContext, IDb
 {
-    public class DataBaseContext : DbContext, IDb
+    public DataBaseContext() : base("name=DataBaseContext")
     {
-        public DataBaseContext() : base("name=DataBaseContext")
+        Database.SetInitializer<DataBaseContext>(null);
+    }
+
+    public DbSet<User> Users { get; set; }
+
+
+    TEntity IDb.Add<TEntity>(TEntity entity)
+    {
+        return base.Set<TEntity>().Add(entity);
+    }
+
+    void IDb.Delete<TEntity>(TEntity entity)
+    {
+        var entry = base.Entry(entity);
+
+        if(entry.State == EntityState.Detached)
         {
-            Database.SetInitializer<DataBaseContext>(null);
+            base.Set<TEntity>().Attach(entity);
         }
 
-        public DbSet<User> Users { get; set; }
+        base.Set<TEntity>().Remove(entity);
+    }
 
+    IQueryable<TEntity> IDb.Query<TEntity>()
+    {
+        return base.Set<TEntity>().AsNoTracking();
+    }
 
-        TEntity IDb.Add<TEntity>(TEntity entity)
-        {
-            return base.Set<TEntity>().Add(entity);
-        }
+    IQueryable<TEntity> IDb.Set<TEntity>()
+    {
+        return base.Set<TEntity>();
+    }
 
-        void IDb.Delete<TEntity>(TEntity entity)
-        {
-            var entry = base.Entry(entity);
-
-            if(entry.State == EntityState.Detached)
-            {
-                base.Set<TEntity>().Attach(entity);
-            }
-
-            base.Set<TEntity>().Remove(entity);
-        }
-
-        IQueryable<TEntity> IDb.Query<TEntity>()
-        {
-            return base.Set<TEntity>().AsNoTracking();
-        }
-
-        IQueryable<TEntity> IDb.Set<TEntity>()
-        {
-            return base.Set<TEntity>();
-        }
-
-        int IDb.SaveChanges()
-        {
-            return base.SaveChanges();
-        }
+    int IDb.SaveChanges()
+    {
+        return base.SaveChanges();
     }
 }
