@@ -1,0 +1,45 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using EntityProject.Application.UserManagment;
+
+namespace EntityProject.Application.Tests.UserManager;
+
+[TestClass]
+public class UserValidationTest
+{
+    [TestMethod]
+    public void PasswordValidation_ShouldReturnPassword_WhenIsValid()
+    {
+        // Arrange
+        var userValidation = new Validation();
+        var password = "test1234@";
+        // Act
+        var result = userValidation.PasswordValidation(password);
+        // Assert
+        Assert.AreEqual("Password confirmed", result);
+    }
+
+    [TestMethod]
+    public void PasswordValidation_ShouldReturnError_WhenDoesNot8Character()
+    {
+        // Arrange
+        var userValidation = new Validation();
+        var password = "test@";
+        // Act
+        var result = userValidation.PasswordValidation(password);
+        // Assert
+        Assert.AreEqual("Your password should be more than 8 characters and contains @", result);
+    }
+
+    [TestMethod]
+    public void PasswordValidation_ShouldReturnError_WhenDoesNotContainAt()
+    {
+        // Arrange
+        var userValidation = new Validation();
+        var password = "test1234";
+        // Act
+        var result = userValidation.PasswordValidation(password);
+        // Assert
+        Assert.AreEqual("Your password should be more than 8 characters and contains @", result);
+    }
+}
