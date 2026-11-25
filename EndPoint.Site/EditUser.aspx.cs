@@ -59,7 +59,7 @@ namespace EndPoint.Site
             {
                lblMessege.Text = ex.UserMessage;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 lblMessege.Text = "Unexpected error happend. Please try again later!";
             }
