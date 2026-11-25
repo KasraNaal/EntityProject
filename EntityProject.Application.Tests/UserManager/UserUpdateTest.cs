@@ -93,7 +93,7 @@ public class UserUpdateTest
         // Act & Assert
         var exception = Assert.ThrowsException<AppException>(() => _sut.Update(request));
 
-        Assert.AreEqual("Error in saving data in database!", exception.UserMessage);
+        Assert.AreEqual("An unexpected error occurred from the database!", exception.UserMessage);
         Assert.AreEqual(orginalDbException, exception.InnerException);
     }
 }
