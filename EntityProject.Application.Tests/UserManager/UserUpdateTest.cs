@@ -96,4 +96,46 @@ public class UserUpdateTest
         Assert.AreEqual("An unexpected error occurred from the database!", exception.UserMessage);
         Assert.AreEqual(orginalDbException, exception.InnerException);
     }
+
+    [TestMethod]
+    public void Update_WhenUserAndPersonAreExist_ShouldUpdateUserAndPersonAndSaveChanges()
+    {
+        var request = new UpdateRequest
+        {
+            Id = 1,
+            FirstName = "Ali",
+            LastName = "Mohamadi",
+            UserName = "AliMohamadi",
+            Password = "AliMohamadi123@"
+        };
+
+        var user = new User 
+        { 
+            Id = 1, 
+            PersonId = 1,
+            UserName = "OldUserName",
+            Password = "OldPassword123@"
+        };
+
+        var person = new Person 
+        { 
+            Id = 1,
+            FirstName = "OldName",
+            LastName = "OldLastname"
+        };
+
+        _userDataAccessMock.Setup(x => x.GetForUpdate(request.Id)).Returns(user);
+        _personDataAccessMock.Setup(x => x.GetForUpdate(user.PersonId)).Returns(person);
+
+        // Act
+        _sut.Update(request);
+
+        // Assert
+        Assert.AreEqual(request.FirstName, person.FirstName);
+        Assert.AreEqual(request.LastName, person.LastName);
+        Assert.AreEqual(request.UserName, user.UserName);
+        Assert.AreEqual(request.Password, user.Password);
+
+        _dbMock.Verify(x => x.SaveChanges(), Times.Once);
+    }
 }
