@@ -53,16 +53,15 @@ namespace EndPoint.Site
                 };
 
                 updateUser.Update(updateRequest);
-
                 Response.Redirect("Default.aspx");
             }
-            //catch (BussinessException ex)
-            //{
-               
-            //}
+            catch (AppException ex)
+            {
+               lblMessege.Text = ex.UserMessage;
+            }
             catch (Exception ex)
             {
-               
+                lblMessege.Text = "Unexpected error hapend. Please try again later!";
             }
         }
 
