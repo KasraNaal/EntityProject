@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserManager\DeleteUserTest.cs" />
     <Compile Include="UserManager\UserUpdateTest.cs" />
     <Compile Include="UserManager\UserValidationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
