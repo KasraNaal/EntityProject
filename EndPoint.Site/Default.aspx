@@ -118,6 +118,8 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                            <br />
+                            <asp:Label ID="lblMessage" runat="server"></asp:Label>
                         </div>
 
                     </div>

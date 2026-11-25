@@ -24,7 +24,18 @@ namespace EndPoint.Site
 
                 int userId = Convert.ToInt32(ids[0]);
 
-                deleteUser.Delete(userId);
+                try
+                {
+                    deleteUser.Delete(userId);
+                }
+                catch(AppException ex)
+                {
+                    lblMessage.Text = ex.UserMessage;
+                }
+                catch(Exception)
+                {
+                    lblMessage.Text = "Unexpected error happend. Please try again later!";
+                }
             }
 
             else if (e.CommandName == "EditUser")
