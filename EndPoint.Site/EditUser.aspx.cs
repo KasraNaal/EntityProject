@@ -21,20 +21,31 @@ namespace EndPoint.Site
             {
                 int userId = Convert.ToInt32(Request.QueryString["id"]);
 
-                var user = getUserById.Execute(userId);
-
-                if (user == null)
+                try
                 {
-                    Response.Redirect("Default.aspx");
+                    var user = getUserById.Execute(userId);
+
+                    if (user == null)
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+                    else
+                    {
+                        var person = personDataAccess.GetById(user.PersonId);
+
+                        txtbFirstName.Text = person.FirstName;
+                        txtbLastName.Text = person.LastName;
+                        txtbUserName.Text = user.UserName;
+                        txtbPassword.Attributes["value"] = user.Password;
+                    }
                 }
-                else
+                catch(AppException ex)
                 {
-                    var person = personDataAccess.GetById(user.PersonId);
-
-                    txtbFirstName.Text = person.FirstName;
-                    txtbLastName.Text = person.LastName;
-                    txtbUserName.Text = user.UserName;
-                    txtbPassword.Attributes["value"] = user.Password;
+                    lblMessege.Text = ex.UserMessage;
+                }
+                catch(Exception)
+                {
+                    lblMessege.Text = "Unexpected error happend. Please try again later!";
                 }
             }
         }
