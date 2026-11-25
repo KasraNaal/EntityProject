@@ -1,5 +1,6 @@
 ﻿using EntityProject.Application.Interface;
 using EntityProject.Application.PersonManagment;
+using System;
 using static EntityProject.Application.UserManagment.IUpdateUser;
 
 namespace EntityProject.Application.UserManagment;
@@ -12,7 +13,7 @@ public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IPersonDataAcces
 
         if(user == null)
         {
-            throw new System.Exception("User not found!");
+            throw new AppException("User not found!");
         }
         user.UserName = updateRequest.UserName;
         user.Password = updateRequest.Password;
@@ -21,12 +22,20 @@ public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IPersonDataAcces
 
         if(person == null)
         {
-            throw new System.Exception("Person not found!");
+            throw new AppException("Person not found!");
         }
 
         person.FirstName = updateRequest.FirstName;
         person.LastName = updateRequest.LastName;
         
-        db.SaveChanges();
+        try
+        {
+            db.SaveChanges();
+        }
+
+        catch(Exception ex)
+        {
+            throw new AppException("Error in saving data in database!", ex);
+        }
     }
 }
