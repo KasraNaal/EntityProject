@@ -35,7 +35,7 @@ public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IPersonDataAcces
 
         catch(Exception ex)
         {
-            throw new AppException("Error in saving data in database!", ex);
+            throw new AppException("An unexpected error occurred from the database!", ex);
         }
     }
 }
