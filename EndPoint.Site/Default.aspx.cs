@@ -18,32 +18,34 @@ namespace EndPoint.Site
 
         protected void dgvShowUsersRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "DeleteUser")
+            try
             {
-                string[] ids = e.CommandArgument.ToString().Split(',');
-
-                int userId = Convert.ToInt32(ids[0]);
-
-                try
+                if (e.CommandName == "DeleteUser")
                 {
+                    string[] ids = e.CommandArgument.ToString().Split(',');
+
+                    int userId = Convert.ToInt32(ids[0]);
+
                     deleteUser.Delete(userId);
+                    
                 }
-                catch(AppException ex)
+
+                else if (e.CommandName == "EditUser")
                 {
-                    lblMessage.Text = ex.UserMessage;
-                }
-                catch(Exception)
-                {
-                    lblMessage.Text = "Unexpected error happend. Please try again later!";
+                    int userId = Convert.ToInt32(e.CommandArgument);
+
+                    Response.Redirect($"EditUser.aspx?id={userId}");
                 }
             }
-
-            else if (e.CommandName == "EditUser")
+            catch (AppException ex)
             {
-                int userId = Convert.ToInt32(e.CommandArgument);
-
-                Response.Redirect($"EditUser.aspx?id={userId}");
+                lblMessage.Text = ex.Message;
             }
+            catch (Exception)
+            {
+                lblMessage.Text = "Unexpected error happend. Please try again later!";
+            }
+
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
