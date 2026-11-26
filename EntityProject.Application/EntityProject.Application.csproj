@@ -53,7 +53,7 @@
     <Compile Include="PersonManagment\IPersonDataAccess.cs" />
     <Compile Include="PersonManagment\ISearchPerson.cs" />
     <Compile Include="UserManagment\DeleteUser.cs" />
-    <Compile Include="UserManagment\AppException.cs" />
+    <Compile Include="Exceptions\AppException.cs" />
     <Compile Include="UserManagment\GetUserById.cs" />
     <Compile Include="UserManagment\IDeleteUser.cs" />
     <Compile Include="UserManagment\IGetUserById.cs" />

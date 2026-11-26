@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityProject.Application.UserManagment;
+namespace EntityProject.Application.Exceptions;
 
 public class AppException : Exception
 {
