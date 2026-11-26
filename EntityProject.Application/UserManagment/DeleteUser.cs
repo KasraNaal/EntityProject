@@ -1,7 +1,6 @@
 ﻿using EntityProject.Application.Interface;
 using EntityProject.Application.PersonManagment;
 using System;
-using System.Data.Entity.Infrastructure;
 
 namespace EntityProject.Application.UserManagment;
 
@@ -27,7 +26,7 @@ public class Delete(
 
         if (person is null)
             throw new AppException("Person not found!");
-        
+
         personDataAccess.Delete(person);
 
         try
