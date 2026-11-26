@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,11 @@ namespace EntityProject.Application.UserManagment;
 
 public class AppException : Exception
 {
-    public string UserMessage { get; }
-
-    public AppException(string userMessage): base(userMessage)
+    public AppException(string message) : base(message)
     {
-        UserMessage = userMessage;
     }
 
-    public AppException(string userMessage, Exception innerException): base(userMessage, innerException)
+    public AppException(string message, Exception innerException) : base(message, innerException)
     {
-        UserMessage = userMessage;
     }
 }

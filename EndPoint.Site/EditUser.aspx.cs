@@ -41,7 +41,7 @@ namespace EndPoint.Site
                 }
                 catch(AppException ex)
                 {
-                    lblMessege.Text = ex.UserMessage;
+                    lblMessege.Text = ex.Message;
                 }
                 catch(Exception)
                 {
@@ -68,7 +68,7 @@ namespace EndPoint.Site
             }
             catch (AppException ex)
             {
-               lblMessege.Text = ex.UserMessage;
+               lblMessege.Text = ex.Message;
             }
             catch (Exception)
             {

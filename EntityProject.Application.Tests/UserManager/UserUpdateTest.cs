@@ -41,7 +41,7 @@ public class UserUpdateTest
 
         // Act & Assert
         var exception = Assert.ThrowsException<AppException>(() => _sut.Update(request));
-        Assert.AreEqual("User not found!", exception.UserMessage);
+        Assert.AreEqual("User not found!", exception.Message);
     }
 
     [TestMethod]
@@ -64,7 +64,7 @@ public class UserUpdateTest
 
         // Act & Assert
         var exception = Assert.ThrowsException<AppException>(() => _sut.Update(request));
-        Assert.AreEqual("Person not found!", exception.UserMessage);
+        Assert.AreEqual("Person not found!", exception.Message);
     }
 
     [TestMethod]
@@ -93,7 +93,7 @@ public class UserUpdateTest
         // Act & Assert
         var exception = Assert.ThrowsException<AppException>(() => _sut.Update(request));
 
-        Assert.AreEqual("An unexpected error occurred from the database!", exception.UserMessage);
+        Assert.AreEqual("An unexpected error occurred from the database!", exception.Message);
         Assert.AreEqual(orginalDbException, exception.InnerException);
     }
 

@@ -28,7 +28,7 @@ public class GetUserByIdTest
     {
         // Act & Assert
         var exception = Assert.ThrowsException<AppException>(() => _sut.Execute(invalidId));
-        Assert.AreEqual("Invalid userId!", exception.UserMessage);
+        Assert.AreEqual("Invalid userId!", exception.Message);
         _userDataAccessMock.Verify(x => x.GetById(It.IsAny<int>()), Times.Never);
     }
 
