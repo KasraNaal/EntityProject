@@ -13,7 +13,7 @@ public class Delete(
 {
     void IDeleteUser.Delete(int userId)
     {
-        userId.UserIdValidation("userId");
+        userId.IsUserIdValidate("userId");
 
 
         var user = userDataAccess.GetForUpdate(userId).IsObjectFound("User");

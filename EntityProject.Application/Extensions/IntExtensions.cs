@@ -10,7 +10,7 @@ namespace EntityProject.Application.Extensions;
 
 public static class IntExtensions
 {
-    public static void UserIdValidation(this int userId, string paraName)
+    public static void IsUserIdValidate(this int userId, string paraName)
     {
         if (userId <= 0)
             throw new AppException($"Invalid {paraName}!");
