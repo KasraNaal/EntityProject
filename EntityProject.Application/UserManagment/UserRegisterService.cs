@@ -1,4 +1,5 @@
-﻿using EntityProject.Application.Interface;
+﻿using EntityProject.Application.Exceptions;
+using EntityProject.Application.Interface;
 using EntityProject.Domain.Entities;
 
 namespace EntityProject.Application.UserManagment;
@@ -27,9 +28,7 @@ public class UserRegisterService(IUserValidation userValidation, IUserDataAccess
         };
 
         if (userExist.IsUserExist(user.UserName))
-        {
-            return "User already exists";
-        }
+            throw new AppException("User already exist!");
 
         userDataAccess.Add(newUser);
         db.SaveChanges();
