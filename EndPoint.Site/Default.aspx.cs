@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.UI.WebControls;
+using EntityProject.Application.Exceptions;
 using EntityProject.Application.UserManagment;
 
 namespace EndPoint.Site

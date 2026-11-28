@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Authentication;
+using EntityProject.Application.Exceptions;
 using EntityProject.Application.PersonManagment;
 using EntityProject.Application.UserManagment;
 using static EntityProject.Application.UserManagment.IUpdateUser;

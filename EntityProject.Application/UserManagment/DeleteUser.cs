@@ -1,4 +1,5 @@
-﻿using EntityProject.Application.Interface;
+﻿using EntityProject.Application.Exceptions;
+using EntityProject.Application.Interface;
 using EntityProject.Application.PersonManagment;
 using System;
 

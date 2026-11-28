@@ -6,6 +6,7 @@ using Moq;
 using System;
 using static EntityProject.Application.UserManagment.IUpdateUser;
 using EntityProject.Domain.Entities;
+using EntityProject.Application.Exceptions;
 
 
 

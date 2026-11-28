@@ -1,4 +1,5 @@
-﻿using EntityProject.Domain.Entities;
+﻿using EntityProject.Application.Exceptions;
+using EntityProject.Domain.Entities;
 
 namespace EntityProject.Application.UserManagment;
 

@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using static EntityProject.Application.UserManagment.IUpdateUser;
 using EntityProject.Domain.Entities;
+using EntityProject.Application.Exceptions;
 
 namespace EntityProject.Application.Tests.UserManager;
 
