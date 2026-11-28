@@ -9,10 +9,9 @@ public class UserRegisterService(IUserValidation userValidation, IUserDataAccess
     public string RegisterUser(UserRegisterRequest user)
     {
         var validationResult = userValidation.PasswordValidation(user.Password);
+
         if (validationResult != "Password confirmed")
-        {
             return validationResult;
-        }
 
         var newPerson = new Person
         {
