@@ -1,4 +1,5 @@
 ﻿using EntityProject.Application.Exceptions;
+using EntityProject.Application.Extensions;
 using EntityProject.Application.Interface;
 using EntityProject.Application.PersonManagment;
 using System;
@@ -12,20 +13,13 @@ public class UpdateUser(IUserDataAccess userDataAccess, IDb db, IPersonDataAcces
     {
         var user = userDataAccess.GetForUpdate(updateRequest.Id);
 
-        if(user == null)
-        {
-            throw new AppException("User not found!");
-        }
+        user.IsObjectFound("User");
         user.UserName = updateRequest.UserName;
         user.Password = updateRequest.Password;
         
         var person = personDataAccess.GetForUpdate(user.PersonId);
 
-        if(person == null)
-        {
-            throw new AppException("Person not found!");
-        }
-
+        person.IsObjectFound("Person");
         person.FirstName = updateRequest.FirstName;
         person.LastName = updateRequest.LastName;
         
