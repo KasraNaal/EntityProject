@@ -1,4 +1,5 @@
-﻿using EntityProject.Application.Exceptions;
+﻿using EndPoint.Site.Extensions;
+using EntityProject.Application.Exceptions;
 using EntityProject.Application.UserManagment;
 using System;
 
@@ -40,11 +41,11 @@ namespace EndPoint.Site
             try
             {
                 var message = userRegisterService.RegisterUser(user);
-                lblMessege.Text = message;
+                lblMessege.ShowError(message);
             }
             catch (AppException ex)
             {
-                lblMessege.Text = ex.Message;
+                lblMessege.ShowError(ex.Message);
             }
         }
 
