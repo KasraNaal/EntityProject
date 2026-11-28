@@ -1,5 +1,6 @@
-﻿using System;
+﻿using EntityProject.Application.Exceptions;
 using EntityProject.Application.UserManagment;
+using System;
 
 namespace EndPoint.Site
 {
@@ -35,10 +36,16 @@ namespace EndPoint.Site
                 UserName = txtbUserName.Text,
                 Password = txtbPassword.Text
             };
-            
-            var message = userRegisterService.RegisterUser(user);
 
-            lblMessege.Text = message;
+            try
+            {
+                var message = userRegisterService.RegisterUser(user);
+                lblMessege.Text = message;
+            }
+            catch (AppException ex)
+            {
+                lblMessege.Text = ex.Message;
+            }
         }
 
         protected void Back_Click(object sender, EventArgs e)
