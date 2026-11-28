@@ -43,11 +43,11 @@ namespace EndPoint.Site
                 }
                 catch(AppException ex)
                 {
-                    lblMessege.Text = ex.Message;
+                    lblMessege.ShowError(ex.Message);
                 }
                 catch(Exception)
                 {
-                    lblMessege.Text = "Unexpected error happend. Please try again later!";
+                    lblMessege.ShowError("Unexpected error happend. Please try again later!");
                 }
             }
         }
@@ -70,11 +70,11 @@ namespace EndPoint.Site
             }
             catch (AppException ex)
             {
-               lblMessege.Text = ex.Message;
+               lblMessege.ShowError(ex.Message);
             }
             catch (Exception)
             {
-                lblMessege.Text = "Unexpected error happend. Please try again later!";
+                lblMessege.ShowError("Unexpected error happend. Please try again later!");
             }
         }
 
