@@ -119,6 +119,7 @@
       <DependentUpon>EditUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IntExtentions.cs" />
+    <Compile Include="Extensions\WebControlExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
