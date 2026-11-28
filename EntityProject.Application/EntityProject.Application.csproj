@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Interface\IDb.cs" />
     <Compile Include="PersonManagment\IPersonDataAccess.cs" />
     <Compile Include="PersonManagment\ISearchPerson.cs" />

@@ -1,4 +1,5 @@
 ﻿using EntityProject.Application.Exceptions;
+using EntityProject.Application.Extensions;
 using EntityProject.Application.Interface;
 using EntityProject.Application.PersonManagment;
 using System;
@@ -12,22 +13,13 @@ public class Delete(
 {
     void IDeleteUser.Delete(int userId)
     {
-        if (userId <= 0)
-            throw new AppException("Invalid userId!");
+        userId.UserIdValidation("userId");
 
 
-        var user = userDataAccess.GetForUpdate(userId);
-
-        if (user is null)
-            throw new AppException("User not found!");
-
+        var user = userDataAccess.GetForUpdate(userId).IsObjectFound("User");
         userDataAccess.Delete(user);
 
-        var person = personDataAccess.GetForUpdate(user.PersonId);
-
-        if (person is null)
-            throw new AppException("Person not found!");
-
+        var person = personDataAccess.GetForUpdate(user.PersonId).IsObjectFound("Person");
         personDataAccess.Delete(person);
 
         try
