@@ -1,8 +1,9 @@
-﻿using System;
-using System.Security.Authentication;
+﻿using EndPoint.Site.Extensions;
 using EntityProject.Application.Exceptions;
 using EntityProject.Application.PersonManagment;
 using EntityProject.Application.UserManagment;
+using System;
+using System.Security.Authentication;
 using static EntityProject.Application.UserManagment.IUpdateUser;
 
 namespace EndPoint.Site
@@ -20,7 +21,7 @@ namespace EndPoint.Site
 
             if (!string.IsNullOrEmpty(Request.QueryString["id"]))
             {
-                int userId = Convert.ToInt32(Request.QueryString["id"]);
+                int userId = Request.GetIntFromQueryString("id");
 
                 try
                 {
