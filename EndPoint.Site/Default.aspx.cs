@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.UI.WebControls;
+using EndPoint.Site.Extensions;
 using EntityProject.Application.Exceptions;
 using EntityProject.Application.UserManagment;
 
@@ -40,11 +41,11 @@ namespace EndPoint.Site
             }
             catch (AppException ex)
             {
-                lblMessage.Text = ex.Message;
+                lblMessage.ShowError(ex.Message);
             }
             catch (Exception)
             {
-                lblMessage.Text = "Unexpected error happend. Please try again later!";
+                lblMessage.ShowError("Unexpected error happend. Please try again later!");
             }
 
         }
